@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7655004212835057968}
   - component: {fileID: 7655004212836058096}
   - component: {fileID: 5902981139824266664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 7655004212835057970}
   - component: {fileID: 7655004212836058098}
   - component: {fileID: 7781519292771392970}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,9 +204,9 @@ GameObject:
   - component: {fileID: 7655004212835057972}
   - component: {fileID: 7655004212836058100}
   - component: {fileID: 3598101976117238593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
-  m_TagString: plane
+  m_TagString: BlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,9 +300,9 @@ GameObject:
   - component: {fileID: 7655004212835057974}
   - component: {fileID: 7655004212836058102}
   - component: {fileID: 885558632627543034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
-  m_TagString: plane
+  m_TagString: BlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7655004212833763612}
   - component: {fileID: -4346865644119153028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: square 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

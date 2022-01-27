@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7105019122470362849}
   - component: {fileID: -5424256899300581710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spikes 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7105019122466971337}
   - component: {fileID: 7105019122468068361}
   - component: {fileID: 4207603423598502180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 7105019122466971339}
   - component: {fileID: 7105019122468068363}
   - component: {fileID: 4750069760800581657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 7105019122466971341}
   - component: {fileID: 7105019122468068365}
   - component: {fileID: 6865484040149628674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 7105019122466971343}
   - component: {fileID: 7105019122468068367}
   - component: {fileID: 320769334312328806}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
   m_TagString: enemy
   m_Icon: {fileID: 0}

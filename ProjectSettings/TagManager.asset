@@ -3,16 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NonBlackShapePart
+  - BlackShapePart
+  - enemy
+  - Done
+  - plane
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Shape
+  - ObjectCatcher
   - 
   - 
   - 

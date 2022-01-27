@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,21 +5,70 @@ namespace StackFall
 {
     public class Game : MonoBehaviour
     {
-        [SerializeField] private Tube _tubePrefab;
-        [SerializeField] private SizeInt _tubeSize;
-        [SerializeField] private float _rotationSpeed;
-        [SerializeField] private List<Shape> _shapes;
-        [SerializeField, Range(0.5f, 5f)] private float rotationIndent = 3;
-        [SerializeField] private SpawnConfig _spawnConfig;
+        [SerializeField] private TubeConfig _tubeConfig;
+        [Space]
+        [SerializeField] private ShapeConfig _shapeConfig;
+        [Space] 
+        [SerializeField] private PlayerConfig _playerConfig;
 
         private Tube _tube;
-        
+        private Player _player;
+
+        private void OnValidate()
+        {
+            if (_tube)
+            {
+                _tube.Initialize(_tubeConfig);
+                _tube.ResizeShapes(_shapeConfig);
+                _tube.ReInitializeShapes(_shapeConfig);
+            }
+        }
+
         private void Awake()
         {
-            _tube = (Tube) PrefabUtility.InstantiatePrefab(_tubePrefab);
+            SetShapeAmountBasedOnTubeHeight();
+            InitializeTube();
+            InitializePlayer();
+        }
+
+        private void Update()
+        {
+            if (_player.CanJump()) 
+                _player.Jump();
+
+            if (Input.GetMouseButton(0))
+                _player.FallDown();
+        }
+
+        private void SetShapeAmountBasedOnTubeHeight()
+        {
+            _shapeConfig.Amount =
+                Mathf.FloorToInt(_tubeConfig.Size.Height * 0.75f / _shapeConfig.Height * _shapeConfig.Height);
+        }
+
+        private void InitializeTube()
+        {
+            _tube = (Tube) PrefabUtility.InstantiatePrefab(_tubeConfig.Prefab);
             
-            _tube.Initialize(_tubeSize, _shapes, _spawnConfig, _rotationSpeed, rotationIndent);
+            _tube.Initialize(_tubeConfig);
+            _tube.SpawnShapes(_shapeConfig);
+            _tube.ResizeShapes(_shapeConfig);
             _tube.RotateAround();
+        }
+
+        private void InitializePlayer()
+        {
+            _player = (Player) PrefabUtility.InstantiatePrefab(_playerConfig.Prefab);
+
+            const float zOffset = 8f;
+            const float yOffset = -5f;
+            var playerPosition = _player.transform.position;
+            playerPosition.x = _tube.transform.position.x;
+            playerPosition.y = _tubeConfig.Size.Height * 2 + yOffset;
+            playerPosition.z = _tube.transform.position.z + zOffset;
+            _player.transform.position = playerPosition;
+            
+            _player.Initialize(_playerConfig);
         }
     }
 }

@@ -6,27 +6,26 @@ namespace StackFall
 {
     public class ShapeCollection : MonoBehaviour
     {
-        private List<Shape> _shapes;
-        private float _rotationIndent = 5;
+        private readonly List<Shape> _shapes = new List<Shape>();
 
-        public void Initialize(List<Shape> shapes, float rotationIndent)
+        public void SpawnShapes(ShapeConfig shapeConfig)
         {
-            _shapes = shapes;
-            _rotationIndent = rotationIndent;
-        }
-        
-        public void SpawnShapes(SpawnConfig spawnConfig)
-        {
-            for (var i = 1; i <= spawnConfig.Amount; i++)
+            for (var i = 1; i <= shapeConfig.Amount; i++)
             {
-                for (var j = 1; j <= _shapes.Count; j++)
-                {
-                    var shape = _shapes[j - 1];
-                    var shapeInstance = (Shape) PrefabUtility.InstantiatePrefab(shape, transform);
-                    shapeInstance.transform.position = spawnConfig.InitialSpawnPoint.position;
-                    shapeInstance.IndentPosition(i * shape.transform.localScale.y);
-                    shape.IndentRotation(j * _rotationIndent);
-                }
+                var shapeInstance = (Shape) PrefabUtility.InstantiatePrefab(shapeConfig.Prefab, transform);
+                shapeInstance.transform.localPosition = Vector3.zero;
+                shapeInstance.Initialize(shapeConfig);
+                shapeInstance.IndentPosition(i);
+                shapeInstance.IndentRotation(i);
+                _shapes.Add(shapeInstance);
+            }
+        }
+
+        public void ReInitializeShapes(ShapeConfig shapeConfig)
+        {
+            foreach (var shape in _shapes)
+            {
+                shape.Initialize(shapeConfig);
             }
         }
 
@@ -37,7 +36,25 @@ namespace StackFall
                 var currentScale = shape.transform.localScale;
                 currentScale.x = newWidth;
                 currentScale.z = newWidth;
-                shape.transform.localScale = currentScale;
+                shape.transform.localScale = currentScale;   
+            }
+        }
+
+        public void ResizeShapesHeightTo(float newHeight)
+        {
+            foreach (var shape in _shapes)
+            {
+                var currentScale = shape.transform.localScale;
+                currentScale.y = newHeight;
+                shape.transform.localScale = currentScale;   
+            }
+        }
+
+        public void DeactivateShapes()
+        {
+            foreach (var shape in _shapes)
+            {
+                shape.gameObject.SetActive(false);
             }
         }
     }

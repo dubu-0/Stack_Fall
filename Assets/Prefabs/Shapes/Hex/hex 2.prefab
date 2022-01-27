@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7193636219230677639}
   - component: {fileID: 7193636219231774791}
   - component: {fileID: 8540449036229878081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 6
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7193636219230677633}
   - component: {fileID: 7193636219231774785}
   - component: {fileID: 5121146694847911256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7193636219229874853}
   - component: {fileID: 387138322214811913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hex 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 7193636219230677637}
   - component: {fileID: 7193636219231774789}
   - component: {fileID: 8641263991517221651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 7193636219230677647}
   - component: {fileID: 7193636219231774799}
   - component: {fileID: 4723821836402215168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 5
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 7193636219230677635}
   - component: {fileID: 7193636219231774787}
   - component: {fileID: 6134688694073888358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 7193636219230677645}
   - component: {fileID: 7193636219231774797}
   - component: {fileID: 4686696614188111574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
   m_TagString: enemy
   m_Icon: {fileID: 0}
