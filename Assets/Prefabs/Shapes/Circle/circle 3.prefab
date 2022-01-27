@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2077828560379817571}
   - component: {fileID: 2077828560378719395}
   - component: {fileID: 7759834749753321668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 2077828560379817573}
   - component: {fileID: 2077828560378719397}
   - component: {fileID: 9135246640851220964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 2077828560379817575}
   - component: {fileID: 2077828560378719399}
   - component: {fileID: 4314753468236685216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2077828560381144647}
   - component: {fileID: 989472814628397103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: circle 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 2077828560379817569}
   - component: {fileID: 2077828560378719393}
   - component: {fileID: 3194827711264573325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
   m_TagString: enemy
   m_Icon: {fileID: 0}

@@ -293,7 +293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 21.96, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -328,19 +328,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425c49e4919d3454394418fc7cd5f9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tubePrefab: {fileID: 5732081828700123750, guid: 9ff835bbd42fbbe45bd387c48e236f5d,
-    type: 3}
-  _tubeSize:
-    Width: 6
-    Height: 25
-  _rotationSpeed: 20
-  _shapes:
-  - {fileID: 2805475305735912531, guid: 32bb4cea65c2524478f25168c77390fc, type: 3}
-  rotationIndent: 2.12
-  _spawnConfig:
-    InitialSpawnPoint: {fileID: 7134072841883745038, guid: 9ff835bbd42fbbe45bd387c48e236f5d,
+  _tubeConfig:
+    Prefab: {fileID: 5732081828700123750, guid: 9ff835bbd42fbbe45bd387c48e236f5d,
       type: 3}
-    Amount: 60
+    Size:
+      Width: 6
+      Height: 47
+    RotationSpeed: 81
+  _shapeConfig:
+    Prefab: {fileID: 2805475305735912531, guid: 32bb4cea65c2524478f25168c77390fc,
+      type: 3}
+    Height: 3.75
+    Amount: 35
+    RotationIndent: 6.82
+    ExplosionOffset: {x: 0, y: 0, z: 0}
+    ExplosionForce: 150
+    ExplosionRadius: 41.4
+    UpwardsModifier: 1.9
+    ExplosionForceMode: 2
+  _playerConfig:
+    Prefab: {fileID: 5551884115536636616, guid: f947b70bb72c0984abcfc68e6fc17e5c,
+      type: 3}
+    JumpPower: 7.9
+    FallDownPower: 50
 --- !u!4 &2074306704
 Transform:
   m_ObjectHideFlags: 0

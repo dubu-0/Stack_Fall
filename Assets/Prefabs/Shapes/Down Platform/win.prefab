@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3024379052838646841}
   - component: {fileID: 3024379052839416857}
   - component: {fileID: 3024379052840548057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3024379052839416859}
   - component: {fileID: 3024379052840548059}
   - component: {fileID: 5993626102028338095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3024379052838646847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: win
   m_TagString: Done
   m_Icon: {fileID: 0}

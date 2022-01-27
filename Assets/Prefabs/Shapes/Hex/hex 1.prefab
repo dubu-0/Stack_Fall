@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2335966404194871073}
   - component: {fileID: 4083347922747657875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hex 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,9 +61,9 @@ GameObject:
   - component: {fileID: 2335966404198295297}
   - component: {fileID: 2335966404197295553}
   - component: {fileID: 3770644042692337303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
-  m_TagString: plane
+  m_TagString: BlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,9 +157,9 @@ GameObject:
   - component: {fileID: 2335966404198295299}
   - component: {fileID: 2335966404197295555}
   - component: {fileID: 3835428817981385925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 6
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,9 +253,9 @@ GameObject:
   - component: {fileID: 2335966404198295301}
   - component: {fileID: 2335966404197295557}
   - component: {fileID: 337238767927548124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,9 +349,9 @@ GameObject:
   - component: {fileID: 2335966404198295303}
   - component: {fileID: 2335966404197295559}
   - component: {fileID: 1629495796246086626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,9 +445,9 @@ GameObject:
   - component: {fileID: 2335966404198295305}
   - component: {fileID: 2335966404197295561}
   - component: {fileID: 195227820470426450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541,9 +541,9 @@ GameObject:
   - component: {fileID: 2335966404198295307}
   - component: {fileID: 2335966404197295563}
   - component: {fileID: 158059164459877508}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 5
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

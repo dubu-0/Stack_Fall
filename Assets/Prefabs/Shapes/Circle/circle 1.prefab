@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6475242235377281482}
   - component: {fileID: 6475242235378379530}
   - component: {fileID: 7592803371097161766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 6475242235377281486}
   - component: {fileID: 6475242235378379534}
   - component: {fileID: 4309851364308631119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,9 +204,9 @@ GameObject:
   - component: {fileID: 6475242235377281480}
   - component: {fileID: 6475242235378379528}
   - component: {fileID: 3366783799304793967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
-  m_TagString: enemy
+  m_TagString: NonBlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,7 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6475242235380148716}
   - component: {fileID: 3108414050156670656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: circle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,9 +347,9 @@ GameObject:
   - component: {fileID: 6475242235377281484}
   - component: {fileID: 6475242235378379532}
   - component: {fileID: 9144653581251287051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
-  m_TagString: plane
+  m_TagString: BlackShapePart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

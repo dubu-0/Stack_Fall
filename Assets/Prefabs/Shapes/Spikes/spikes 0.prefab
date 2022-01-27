@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4136064895190106756}
   - component: {fileID: -1027280161844958388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spikes 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4136064895193006760}
   - component: {fileID: 4136064895191875688}
   - component: {fileID: 340938184085629799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4136064895193006762}
   - component: {fileID: 4136064895191875690}
   - component: {fileID: 6885935825255088643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 4
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 4136064895193006764}
   - component: {fileID: 4136064895191875692}
   - component: {fileID: 7032424838421511489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 4136064895193006766}
   - component: {fileID: 4136064895191875694}
   - component: {fileID: 1880247772174021756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 2
   m_TagString: enemy
   m_Icon: {fileID: 0}
