@@ -10,6 +10,10 @@ namespace StackFall
         [SerializeField] private ShapeConfig _shapeConfig;
         [Space] 
         [SerializeField] private PlayerConfig _playerConfig;
+        [Space]
+        [SerializeField] private CameraWrapper _cameraWrapper;
+        [SerializeField] private VirtualCameraWrapper _virtualCameraWrapper;
+        [SerializeField] private CameraConfig _cameraConfig;
 
         private Tube _tube;
         private Player _player;
@@ -29,6 +33,7 @@ namespace StackFall
             SetShapeAmountBasedOnTubeHeight();
             InitializeTube();
             InitializePlayer();
+            InitializeCamera();
         }
 
         private void Update()
@@ -69,6 +74,13 @@ namespace StackFall
             _player.transform.position = playerPosition;
             
             _player.Initialize(_playerConfig);
+        }
+
+        private void InitializeCamera()
+        {
+            _cameraConfig.TargetToFollow = _player.transform;
+            _cameraWrapper.Initialize(_cameraConfig);
+            _virtualCameraWrapper.Initialize(_cameraConfig);
         }
     }
 }

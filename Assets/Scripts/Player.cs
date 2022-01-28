@@ -50,7 +50,7 @@ namespace StackFall
 
 		private bool IsNotFallingDown(float yImpulse)
 		{
-			return yImpulse < _playerConfig.FallDownPower;
+			return yImpulse < _playerConfig.FallDownPower * 0.5f;
 		}
 	}
 }

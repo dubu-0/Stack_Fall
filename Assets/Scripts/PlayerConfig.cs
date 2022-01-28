@@ -6,9 +6,11 @@ namespace StackFall
 	[Serializable]
 	public struct PlayerConfig
 	{
-		public Player Prefab;
+		[SerializeField] private Player _prefab;
 		[Space]
 		[Range(1, 12)] public float JumpPower;
-		[Range(25, 50)] public float FallDownPower;
+		[Range(25, 150)] public float FallDownPower;
+
+		public Player Prefab => _prefab;
 	}
 }
