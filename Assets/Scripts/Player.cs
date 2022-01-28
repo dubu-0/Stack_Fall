@@ -34,22 +34,23 @@ namespace StackFall
 
 		private void OnCollisionEnter(Collision collision)
 		{
-			if (!IsFallingDown(collision.impulse.y)) return;
-
-			if (collision.gameObject.CompareTag(ShapePartTags.Black))
+			if (IsNotFallingDown(collision.impulse.y)) return;
+			if (!collision.gameObject.TryGetComponent(out ShapePart shapePart)) return;
+			
+			switch (shapePart.IsBlack)
 			{
-				Debug.LogWarning("Black part touched, player died");
-			}
-
-			if (collision.gameObject.CompareTag(ShapePartTags.NonBlack))
-			{
-				collision.gameObject.GetComponentInParent<Shape>().Explode();
+				case true:
+					Debug.LogWarning("Black part touched, player died");
+					break;
+				case false:
+					shapePart.GetComponentInParent<Shape>().Explode();
+					break;
 			}
 		}
 
-		private bool IsFallingDown(float yImpulse)
+		private bool IsNotFallingDown(float yImpulse)
 		{
-			return yImpulse >= _playerConfig.FallDownPower / 2;
+			return yImpulse < _playerConfig.FallDownPower;
 		}
 	}
 }

@@ -340,12 +340,18 @@ MonoBehaviour:
       type: 3}
     Height: 3.75
     Amount: 35
-    RotationIndent: 6.82
-    ExplosionOffset: {x: 0, y: 0, z: 0}
-    ExplosionForce: 150
-    ExplosionRadius: 41.4
-    UpwardsModifier: 1.9
-    ExplosionForceMode: 2
+    RotationIndent: 6.83
+    ShapePartConfig:
+      FlyOffForce:
+        _min: 222.65
+        _max: 361.04
+      FlyOffTorque:
+        _min: 120.61
+        _max: 183.24
+      UpwardsModifier:
+        _min: 0.83
+        _max: 1.44
+      ExplosionForceMode: 2
   _playerConfig:
     Prefab: {fileID: 5551884115536636616, guid: f947b70bb72c0984abcfc68e6fc17e5c,
       type: 3}

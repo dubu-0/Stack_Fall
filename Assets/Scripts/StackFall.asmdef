@@ -1,7 +1,9 @@
 {
     "name": "StackFall",
     "rootNamespace": "StackFall",
-    "references": [],
+    "references": [
+        "GUID:36a338ced22403548ba814cc5ecfec71"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
