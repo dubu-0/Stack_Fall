@@ -18,9 +18,6 @@ namespace StackFall
 			_camera.backgroundColor = _cameraConfig.Background;
 			_camera.orthographic = _cameraConfig.IsOrthographic;
 			_camera.orthographicSize = _cameraConfig.Size;
-			_camera.transform.position = _cameraConfig.TargetToFollow.position + _cameraConfig.PositionOffset;
-			_camera.transform.rotation =
-				Quaternion.Euler(_cameraConfig.TargetToFollow.rotation.eulerAngles + _cameraConfig.RotationOffset);
 		}
 	}
 }

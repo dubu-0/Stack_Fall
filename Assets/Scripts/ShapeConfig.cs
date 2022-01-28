@@ -4,16 +4,23 @@ using UnityEngine;
 namespace StackFall
 {
 	[Serializable]
-	public struct ShapeConfig
+	public class ShapeConfig
 	{
-		[SerializeField] private Shape _prefab;
-		[Space]
-		[Range(1, 7)] public float Height;
-		[Range(10, 100)] public int Amount;
-		[Range(1, 15)] public float RotationIndent;
-		[Space]
-		public ShapePartConfig ShapePartConfig;
+		[field: SerializeField] public Shape Prefab { get; private set; }
+		[field: Space]
+		[field: SerializeField, Range(1, 7)] public float Height { get; private set; }
+		[field: SerializeField, Range(1, 15)] public float RotationIndent { get; private set; }
+		[field: Space]
+		[field: SerializeField] public ShapePartConfig ShapePartConfig { get; private set; }
 
-		public Shape Prefab => _prefab;
+		public int Amount { get; private set; }
+
+		public void InitAmount(int value)
+		{
+			if (Amount != 0)
+				throw new Exception("Amount already inited");
+
+			Amount = value;
+		}
 	}
 }

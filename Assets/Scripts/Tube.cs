@@ -38,7 +38,7 @@ namespace StackFall
 
 		public void ResizeShapes(ShapeConfig shapeSpawnConfig)
 		{
-			_shapeCollection.ResizeShapesWidthTo(_tubeConfig.Size.Width);
+			_shapeCollection.ResizeShapesWidthTo(_tubeConfig.Size.Width * 0.7f);
 			_shapeCollection.ResizeShapesHeightTo(shapeSpawnConfig.Height);
 		}
 

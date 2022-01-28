@@ -16,22 +16,6 @@ namespace StackFall
 			_playerConfig = playerConfig;
 		}
 
-		public void Jump()
-		{
-			if (!CanJump()) throw new Exception("Cannot jump, velocity.y > 0");
-			_rigidbody.velocity = new Vector3(0f, _playerConfig.JumpPower, 0f);
-		}
-
-		public bool CanJump()
-		{
-			return Mathf.Approximately(_rigidbody.velocity.y, 0f);
-		}
-
-		public void FallDown()
-		{
-			_rigidbody.velocity = new Vector3(0f, -_playerConfig.FallDownPower, 0f);
-		}
-
 		private void OnCollisionEnter(Collision collision)
 		{
 			if (IsNotFallingDown(collision.impulse.y)) return;
@@ -48,9 +32,25 @@ namespace StackFall
 			}
 		}
 
-		private bool IsNotFallingDown(float yImpulse)
+		public void Jump()
 		{
-			return yImpulse < _playerConfig.FallDownPower * 0.5f;
+			if (!CanJump()) throw new Exception("Cannot jump, velocity.y > 0");
+			_rigidbody.velocity = new Vector3(0f, _playerConfig.JumpPower, 0f);
+		}
+
+		public bool CanJump()
+		{
+			return Mathf.Approximately(_rigidbody.velocity.y, 0f);
+		}
+
+		public void FallDown()
+		{
+			_rigidbody.velocity = new Vector3(0f, -_playerConfig.FallDownSpeed, 0f);
+		}
+
+		private bool IsNotFallingDown(float impulseY)
+		{
+			return impulseY < _playerConfig.FallDownSpeed * 0.5f;
 		}
 	}
 }

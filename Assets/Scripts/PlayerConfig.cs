@@ -4,13 +4,11 @@ using UnityEngine;
 namespace StackFall
 {
 	[Serializable]
-	public struct PlayerConfig
+	public class PlayerConfig
 	{
-		[SerializeField] private Player _prefab;
-		[Space]
-		[Range(1, 12)] public float JumpPower;
-		[Range(25, 150)] public float FallDownPower;
-
-		public Player Prefab => _prefab;
+		[field: SerializeField] public Player Prefab { get; private set; }
+		[field: Space]
+		[field: Range(1, 12)] public float JumpPower;
+		[field: Range(25, 150)] public float FallDownSpeed;
 	}
 }
