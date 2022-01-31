@@ -13,6 +13,7 @@ namespace StackFall
         [SerializeField] private Player _playerPrefab;
         [SerializeField] private Tube _tubePrefab;
         [SerializeField] private ShapeSpawner _shapeSpawnerPrefab;
+        [SerializeField] private SpritePrinter _spritePrinterPrefab;
         [SerializeField] private CameraWrapper _cameraWrapper;
         [SerializeField] private VirtualCameraWrapper _virtualCameraWrapper;
         [SerializeField] private LevelConfig _levelConfig;
@@ -20,9 +21,11 @@ namespace StackFall
 
         private Tube _tube;
         private Player _player;
+        private PlayerCollisionHandler _playerCollisionHandler;
         private ShapeSpawner _shapeSpawner;
         private LevelCounter _levelCounter;
         private LevelDifficulty _levelDifficulty;
+        private FxController _fxController;
 
         private void Awake()
         {
@@ -32,19 +35,20 @@ namespace StackFall
             InitializeTube();
             InitializeShapeSpawner();
             InitializePlayer();
+            InitializePlayerCollisionHandler();
             InitializeCamera();
+            InitializeSpritePrinter();
+            InitializeFxController();
         }
 
-        private void InitializeLevelDifficulty()
+        private void OnEnable()
         {
-            _levelDifficulty = new LevelDifficulty(_levelCounter);
+            _fxController.Subscribe();
         }
 
-        private void InitializeLevelCounter()
+        private void OnDisable()
         {
-            _levelCounter = new LevelCounter();
-            _levelCounter.Load();
-            Debug.Log(_levelCounter.GetCurrent());
+            _fxController.Unsubscribe();
         }
 
         private void FixedUpdate()
@@ -56,6 +60,9 @@ namespace StackFall
         {
             if (Input.GetMouseButton(0))
                 _player.FallDown();
+
+            if (Input.GetMouseButtonUp(0))
+                _player.IsNotFallingDown = true;
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -69,6 +76,18 @@ namespace StackFall
                 _levelCounter.Reset();
                 Debug.Log(_levelCounter.GetCurrent());
             }
+        }
+
+        private void InitializeLevelDifficulty()
+        {
+            _levelDifficulty = new LevelDifficulty(_levelCounter);
+        }
+
+        private void InitializeLevelCounter()
+        {
+            _levelCounter = new LevelCounter();
+            _levelCounter.Load();
+            Debug.Log(_levelCounter.GetCurrent());
         }
 
         private void InitializeShapeSpawner()
@@ -109,11 +128,27 @@ namespace StackFall
             _player.Initialize(_levelConfig.PlayerConfig);
         }
 
+        private void InitializePlayerCollisionHandler()
+        {
+            _playerCollisionHandler = _player.GetComponent<PlayerCollisionHandler>();
+            _playerCollisionHandler.Initialize();
+        }
+
         private void InitializeCamera()
         {
             _cameraConfig.InitTargetToFollow(_player.transform);
             _virtualCameraWrapper.Initialize(_cameraConfig);
             _cameraWrapper.Initialize(_cameraConfig);
+        }
+
+        private void InitializeFxController()
+        {
+            _fxController = new FxController(_playerCollisionHandler, _spritePrinterPrefab);
+        }
+
+        private void InitializeSpritePrinter()
+        {
+            _spritePrinterPrefab.Initialize(_player.transform);
         }
     }
 }

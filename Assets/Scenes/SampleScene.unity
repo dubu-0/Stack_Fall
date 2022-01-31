@@ -462,6 +462,8 @@ MonoBehaviour:
     type: 3}
   _shapeSpawnerPrefab: {fileID: 210986088895055977, guid: 33e5b379a0dc8e3498e25cc6e49e6013,
     type: 3}
+  _spritePrinterPrefab: {fileID: -96941729895049184, guid: 0a05de5742d4264418255ad0caf2f85e,
+    type: 3}
   _cameraWrapper: {fileID: 963194229}
   _virtualCameraWrapper: {fileID: 265379716}
   _levelConfig: {fileID: 11400000, guid: 7ce455cc356935246a93df94f0b99432, type: 2}
