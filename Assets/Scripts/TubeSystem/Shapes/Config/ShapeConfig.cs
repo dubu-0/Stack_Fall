@@ -1,9 +1,9 @@
 ﻿using System;
 using StackFall.Ranges.Float;
-using StackFall.Tube.Shapes.Parts.Config;
+using StackFall.TubeSystem.Shapes.Parts.Config;
 using UnityEngine;
 
-namespace StackFall.Tube.Shapes.Config
+namespace StackFall.TubeSystem.Shapes.Config
 {
 	[Serializable]
 	public class ShapeConfig

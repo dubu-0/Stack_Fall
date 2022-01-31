@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace StackFall.Player
+namespace StackFall.PlayerSystem
 {
 	public class PlayerView : MonoBehaviour
 	{

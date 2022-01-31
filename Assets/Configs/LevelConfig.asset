@@ -26,14 +26,14 @@ MonoBehaviour:
       _colorCollection: {fileID: 11400000, guid: 167a3dc4ff9a1fd4da284b5ba3c99737,
         type: 2}
       <FlyOffForce>k__BackingField:
-        _min: 107.21
-        _max: 236.88
+        _min: 88.14
+        _max: 210.18
       <FlyOffTorque>k__BackingField:
-        _min: 124.41
-        _max: 167.13
+        _min: 100
+        _max: 142.72
       <UpwardsModifier>k__BackingField:
-        _min: 0.95
-        _max: 1.83
+        _min: 1.15
+        _max: 2.34
       <ExplosionForceMode>k__BackingField: 2
   <ShapePrefabsProvider>k__BackingField:
     _allShapePrefabs:

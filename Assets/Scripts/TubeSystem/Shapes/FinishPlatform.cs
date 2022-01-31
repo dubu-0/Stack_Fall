@@ -1,7 +1,7 @@
 ﻿using StackFall.Ranges.Int;
 using UnityEngine;
 
-namespace StackFall.Tube.Shapes
+namespace StackFall.TubeSystem.Shapes
 {
 	public class FinishPlatform : MonoBehaviour
 	{

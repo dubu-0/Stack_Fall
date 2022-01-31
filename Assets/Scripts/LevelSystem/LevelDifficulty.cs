@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using StackFall.Ranges.Float;
-using StackFall.Tube.Shapes.Config;
+using StackFall.TubeSystem.Shapes.Config;
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.LevelSystem
 {
 	public class LevelDifficulty
 	{

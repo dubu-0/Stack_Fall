@@ -2,7 +2,7 @@
 using StackFall.Ranges.Float;
 using UnityEngine;
 
-namespace StackFall.Tube.Shapes.Parts.Config
+namespace StackFall.TubeSystem.Shapes.Parts.Config
 {
 	[Serializable]
 	public class ShapePartConfig

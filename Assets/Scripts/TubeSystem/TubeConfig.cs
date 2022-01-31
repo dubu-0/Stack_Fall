@@ -2,7 +2,7 @@
 using StackFall.Ranges.Int;
 using UnityEngine;
 
-namespace StackFall.Tube
+namespace StackFall.TubeSystem
 {
 	[Serializable]
 	public class TubeConfig

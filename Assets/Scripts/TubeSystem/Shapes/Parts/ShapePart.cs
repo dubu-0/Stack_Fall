@@ -1,7 +1,7 @@
-﻿using StackFall.Tube.Shapes.Parts.Config;
+﻿using StackFall.TubeSystem.Shapes.Parts.Config;
 using UnityEngine;
 
-namespace StackFall.Tube.Shapes.Parts
+namespace StackFall.TubeSystem.Shapes.Parts
 {
 	[RequireComponent(typeof(MeshRenderer))]
 	[RequireComponent(typeof(Rigidbody))]

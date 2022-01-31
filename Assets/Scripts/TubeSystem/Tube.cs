@@ -1,12 +1,12 @@
 ﻿using System.Collections;
-using DG.Tweening;
-using StackFall.Tube.Shapes;
+using StackFall.LevelSystem;
+using StackFall.TubeSystem.Shapes;
 using UnityEngine;
 
-namespace StackFall.Tube
+namespace StackFall.TubeSystem
 {
 	[SelectionBase]
-	public class TubeSystem : MonoBehaviour
+	public class Tube : MonoBehaviour
 	{
 		[field: SerializeField] public Transform Rotator { get; private set; }
 		

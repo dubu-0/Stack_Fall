@@ -1,7 +1,8 @@
 using StackFall.Cam;
-using StackFall.Player;
-using StackFall.Tube;
-using StackFall.Tube.Shapes;
+using StackFall.LevelSystem;
+using StackFall.PlayerSystem;
+using StackFall.TubeSystem;
+using StackFall.TubeSystem.Shapes;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,16 +10,16 @@ namespace StackFall
 {
     public class Game : MonoBehaviour
     {
-        [SerializeField] private PlayerSystem _playerPrefab;
-        [SerializeField] private TubeSystem _tubePrefab;
+        [SerializeField] private Player _playerPrefab;
+        [SerializeField] private Tube _tubePrefab;
         [SerializeField] private ShapeSpawner _shapeSpawnerPrefab;
         [SerializeField] private CameraWrapper _cameraWrapper;
         [SerializeField] private VirtualCameraWrapper _virtualCameraWrapper;
         [SerializeField] private LevelConfig _levelConfig;
         [SerializeField] private CameraConfig _cameraConfig;
 
-        private TubeSystem _tubeSystem;
-        private PlayerSystem _playerSystem;
+        private Tube _tube;
+        private Player _player;
         private ShapeSpawner _shapeSpawner;
         private LevelCounter _levelCounter;
         private LevelDifficulty _levelDifficulty;
@@ -48,13 +49,13 @@ namespace StackFall
 
         private void FixedUpdate()
         {
-            _playerSystem.ApplyGravity();
+            _player.ApplyGravity();
         }
 
         private void Update()
         {
             if (Input.GetMouseButton(0))
-                _playerSystem.FallDown();
+                _player.FallDown();
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -77,7 +78,7 @@ namespace StackFall
             _shapeSpawner.Initialize(_levelConfig.ShapePrefabsProvider.GetRandomPrefabs());
             _shapeSpawner.ResizeShapesHeightTo(_levelConfig.ShapeConfig.Height);
             _shapeSpawner.ResizeShapesWidthTo(_levelConfig.TubeConfig.Size.Width * 0.7f);
-            _shapeSpawner.SpawnShapes(_levelConfig.ShapeConfig, _tubeSystem.Rotator, _levelDifficulty);
+            _shapeSpawner.SpawnShapes(_levelConfig.ShapeConfig, _tube.Rotator, _levelDifficulty);
         }
 
         private void SetShapeAmountBasedOnTubeHeight()
@@ -89,28 +90,28 @@ namespace StackFall
 
         private void InitializeTube()
         {
-            _tubeSystem = (TubeSystem) PrefabUtility.InstantiatePrefab(_tubePrefab);
+            _tube = (Tube) PrefabUtility.InstantiatePrefab(_tubePrefab);
             
-            _tubeSystem.Initialize(_levelConfig.TubeConfig, _levelDifficulty);
-            _tubeSystem.RotateAround();
+            _tube.Initialize(_levelConfig.TubeConfig, _levelDifficulty);
+            _tube.RotateAround();
         }
 
         private void InitializePlayer()
         {
-            _playerSystem = (PlayerSystem) PrefabUtility.InstantiatePrefab(_playerPrefab);
+            _player = (Player) PrefabUtility.InstantiatePrefab(_playerPrefab);
 
             const float yOffset = 4f;
             const float zOffset = 5f;
 
-            var topShape = _tubeSystem.Rotator.GetChild(_tubeSystem.Rotator.childCount - 1);
-            _playerSystem.transform.position = topShape.position + new Vector3(0, yOffset, zOffset);
+            var topShape = _tube.Rotator.GetChild(_tube.Rotator.childCount - 1);
+            _player.transform.position = topShape.position + new Vector3(0, yOffset, zOffset);
 
-            _playerSystem.Initialize(_levelConfig.PlayerConfig);
+            _player.Initialize(_levelConfig.PlayerConfig);
         }
 
         private void InitializeCamera()
         {
-            _cameraConfig.InitTargetToFollow(_playerSystem.transform);
+            _cameraConfig.InitTargetToFollow(_player.transform);
             _virtualCameraWrapper.Initialize(_cameraConfig);
             _cameraWrapper.Initialize(_cameraConfig);
         }

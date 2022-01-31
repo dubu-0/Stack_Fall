@@ -1,4 +1,4 @@
-﻿namespace StackFall.Tube.Shapes.Config
+﻿namespace StackFall.TubeSystem.Shapes.Config
 {
 	public enum ShapeType
 	{

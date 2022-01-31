@@ -1,7 +1,6 @@
-using StackFall.Ranges.Int;
 using UnityEngine;
 
-namespace StackFall.Tube
+namespace StackFall.TubeSystem
 {
     public class TubeView : MonoBehaviour
     {

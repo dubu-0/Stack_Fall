@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using StackFall.Tube.Shapes.Config;
+using StackFall.LevelSystem;
+using StackFall.TubeSystem.Shapes.Config;
 using UnityEditor;
 using UnityEngine;
 
-namespace StackFall.Tube.Shapes
+namespace StackFall.TubeSystem.Shapes
 {
     public class ShapeSpawner : MonoBehaviour
     {

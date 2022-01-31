@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace StackFall.Player
+namespace StackFall.PlayerSystem
 {
 	[Serializable]
 	public class PlayerConfig

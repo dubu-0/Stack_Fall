@@ -1,10 +1,10 @@
 ﻿using System;
-using StackFall.Player;
-using StackFall.Tube;
-using StackFall.Tube.Shapes.Config;
+using StackFall.PlayerSystem;
+using StackFall.TubeSystem;
+using StackFall.TubeSystem.Shapes.Config;
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.LevelSystem
 {
 	[CreateAssetMenu(menuName = "Configs/Create LevelConfig", fileName = "LevelConfig", order = 0)]
 	[Serializable]
