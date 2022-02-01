@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.StateMachineBehaviors
 {
 	public class FadeBehavior : StateMachineBehaviour
 	{

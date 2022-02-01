@@ -6,20 +6,24 @@ namespace StackFall
 	public class SpritePrinter : MonoBehaviour
 	{
 		private SpriteRenderer _spriteRenderer;
-		private Transform _printInvoker;
 
-		public void Initialize(Transform printInvoker)
+		public void Initialize()
 		{
 			_spriteRenderer = GetComponent<SpriteRenderer>();
-			_printInvoker = printInvoker;
 		}
 		
-		public void Print()
+		public void Print(Transform container, Vector3 position)
 		{
-			var print = Instantiate(_spriteRenderer, _printInvoker, false);
-			print.transform.localPosition = Vector3.zero;
-			print.transform.Rotate(90f, 0f, 0f);
-			print.transform.SetParent(null);
+			var print = Instantiate(_spriteRenderer, container, false);
+			Debug.Log(print.color);
+			print.transform.position = position;
+			print.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+			print.transform.position += new Vector3(0f, 0.25f, 0f);
+
+			var randomRotation = Random.rotation.eulerAngles;
+			var rotation = print.transform.rotation;
+			rotation.eulerAngles = new Vector3(90f, randomRotation.y, randomRotation.z);
+			print.transform.rotation = rotation;
 		}
 	}
 }

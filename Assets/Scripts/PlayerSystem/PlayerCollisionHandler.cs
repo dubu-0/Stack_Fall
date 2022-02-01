@@ -16,17 +16,19 @@ namespace StackFall.PlayerSystem
 		
 		public event Action OnBlackPartTouched;
 		public event Action OnWinPlatformTouched;
-		public event Action OnShapePartTouched;
+		public event Action<Transform, Vector3> OnShapePartTouched;
 		
 		private void OnCollisionEnter(Collision collision)
 		{
-			if (_player.IsNotFallingDown) 
-				return;
-			
 			if (IsNotCollidedWith(collision, out ShapePart shapePart)) 
 				return;
+			
+			OnShapePartTouched?.Invoke(collision.transform, collision.GetContact(collision.contactCount - 1).point);
+			
+			if (_player.IsNotFallingDown) 
+				return;
 
-			HandleCollisionWith(shapePart);
+			HandleFallWith(shapePart);
 
 			if (IsNotCollidedWith(collision, out WinPlatform winPlatform)) 
 				return;
@@ -56,10 +58,8 @@ namespace StackFall.PlayerSystem
 			OnWinPlatformTouched?.Invoke();
 		}
 
-		private void HandleCollisionWith(ShapePart shapePart)
+		private void HandleFallWith(ShapePart shapePart)
 		{
-			OnShapePartTouched?.Invoke();
-			
 			if (shapePart.IsBlack)
 				OnBlackPartTouched?.Invoke();
 			else

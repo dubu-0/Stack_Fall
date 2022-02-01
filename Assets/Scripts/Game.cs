@@ -148,7 +148,7 @@ namespace StackFall
 
         private void InitializeSpritePrinter()
         {
-            _spritePrinterPrefab.Initialize(_player.transform);
+            _spritePrinterPrefab.Initialize();
         }
     }
 }
