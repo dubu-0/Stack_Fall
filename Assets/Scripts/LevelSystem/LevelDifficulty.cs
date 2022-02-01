@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using StackFall.TubeSystem.Shapes.Config;
+using StackFall.Shapes.Config;
 using UnityEngine;
 
 namespace StackFall.LevelSystem
@@ -9,42 +9,40 @@ namespace StackFall.LevelSystem
 		private readonly List<int> _levels = new List<int> { 20, 50, 100, 200, int.MaxValue };
 		private readonly LevelCounter _levelCounter;
 
-		private readonly int _current;
+		private readonly int _currentDifficulty;
 		
 		public LevelDifficulty(LevelCounter levelCounter)
 		{
 			_levelCounter = levelCounter;
-			_current = GetCurrent();
+			_currentDifficulty = GetCurrentDifficulty();
 		}
 
 		public List<ShapeType> GetShapeTypesForCurrentDifficulty()
 		{
 			var shapeTypes = new List<ShapeType>(3);
 
-			if (_current == 1)
+			switch (_currentDifficulty)
 			{
-				shapeTypes.Add(ShapeType.ZeroBlackParts);
-				shapeTypes.Add(ShapeType.OneBlackPart);
-			}
-			else if (_current == 2)
-			{
-				shapeTypes.Add(ShapeType.ZeroBlackParts);
-				shapeTypes.Add(ShapeType.OneBlackPart);
-				shapeTypes.Add(ShapeType.TwoBlackParts);
-			}
-			else if (_current == 3)
-			{
-				shapeTypes.Add(ShapeType.OneBlackPart);
-				shapeTypes.Add(ShapeType.TwoBlackParts);
-			}
-			else if (_current == 4)
-			{
-				shapeTypes.Add(ShapeType.TwoBlackParts);
-				shapeTypes.Add(ShapeType.ThreeBlackParts);
-			}
-			else if (_current == 5)
-			{
-				shapeTypes.Add(ShapeType.ThreeBlackParts);
+				case 1:
+					shapeTypes.Add(ShapeType.ZeroBlackParts);
+					shapeTypes.Add(ShapeType.OneBlackPart);
+					break;
+				case 2:
+					shapeTypes.Add(ShapeType.ZeroBlackParts);
+					shapeTypes.Add(ShapeType.OneBlackPart);
+					shapeTypes.Add(ShapeType.TwoBlackParts);
+					break;
+				case 3:
+					shapeTypes.Add(ShapeType.OneBlackPart);
+					shapeTypes.Add(ShapeType.TwoBlackParts);
+					break;
+				case 4:
+					shapeTypes.Add(ShapeType.TwoBlackParts);
+					shapeTypes.Add(ShapeType.ThreeBlackParts);
+					break;
+				case 5:
+					shapeTypes.Add(ShapeType.ThreeBlackParts);
+					break;
 			}
 
 			return shapeTypes;
@@ -55,12 +53,12 @@ namespace StackFall.LevelSystem
 			return minRotationSpeed + ScaledSquareRoot(_levelCounter.GetCurrent(), 18);
 		}
 		
-		public float GetTubeHeightForCurrentDifficulty(float minTubeHeight)
+		public int GetTubeHeightForCurrentDifficulty(int minTubeHeight)
 		{
-			return minTubeHeight + ScaledSquareRoot(_levelCounter.GetCurrent(), 18);
+			return Mathf.RoundToInt(minTubeHeight + ScaledSquareRoot(_levelCounter.GetCurrent(), 18));
 		}
 
-		private int GetCurrent()
+		private int GetCurrentDifficulty()
 		{
 			for (var i = 0; i < _levels.Count; i++)
 			{

@@ -1,6 +1,6 @@
 ﻿using System;
-using StackFall.TubeSystem.Shapes;
-using StackFall.TubeSystem.Shapes.Parts;
+using StackFall.Shapes;
+using StackFall.Shapes.Parts;
 using UnityEngine;
 
 namespace StackFall.PlayerSystem

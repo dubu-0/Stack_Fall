@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using StackFall.TubeSystem.Shapes;
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.Shapes
 {
 	[Serializable]
 	public class ShapePrefabsContainer

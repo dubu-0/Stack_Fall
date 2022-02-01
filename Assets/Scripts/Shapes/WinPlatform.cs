@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.Shapes
 {
     public class WinPlatform : MonoBehaviour
     {

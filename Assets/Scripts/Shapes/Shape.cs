@@ -1,8 +1,8 @@
-﻿using StackFall.TubeSystem.Shapes.Config;
-using StackFall.TubeSystem.Shapes.Parts;
+﻿using StackFall.Shapes.Config;
+using StackFall.Shapes.Parts;
 using UnityEngine;
 
-namespace StackFall.TubeSystem.Shapes
+namespace StackFall.Shapes
 {
 	[SelectionBase]
 	public class Shape : MonoBehaviour

@@ -1,8 +1,9 @@
 ﻿using System;
+using StackFall.Colors;
 using StackFall.Ranges.Float;
 using UnityEngine;
 
-namespace StackFall.TubeSystem.Shapes.Parts.Config
+namespace StackFall.Shapes.Parts.Config
 {
 	[Serializable]
 	public class ShapePartConfig

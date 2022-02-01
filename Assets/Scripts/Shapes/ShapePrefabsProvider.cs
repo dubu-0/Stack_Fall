@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using StackFall.TubeSystem.Shapes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace StackFall
+namespace StackFall.Shapes
 {
 	[Serializable]
 	public class ShapePrefabsProvider

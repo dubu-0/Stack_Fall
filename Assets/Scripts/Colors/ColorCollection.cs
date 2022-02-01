@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.Colors
 {
 	
 	[CreateAssetMenu(menuName = "Collections/Create ColorCollection", fileName = "ColorCollection", order = 0)]

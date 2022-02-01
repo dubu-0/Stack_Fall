@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace StackFall
+namespace StackFall.Gravity
 {
 	[RequireComponent(typeof(Rigidbody))]
 	public class CustomGravity : MonoBehaviour
@@ -16,13 +16,18 @@ namespace StackFall
 			_rigidbody.useGravity = false;
 		}
 
+		private void FixedUpdate()
+		{
+			ApplyGravity();
+		}
+
 		public void InitGravityScale(float value)
 		{
 			if (_gravityScale != 0f) throw new Exception("Already inited");
 			_gravityScale = value;
 		}
 
-		public void ApplyGravity()
+		private void ApplyGravity()
 		{
 			_rigidbody.AddForce(_globalGravity * _gravityScale, ForceMode.Acceleration);
 		}

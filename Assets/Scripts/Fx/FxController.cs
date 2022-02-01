@@ -1,6 +1,7 @@
 ﻿using StackFall.PlayerSystem;
+using StackFall.Printers;
 
-namespace StackFall
+namespace StackFall.Fx
 {
 	public class FxController
 	{

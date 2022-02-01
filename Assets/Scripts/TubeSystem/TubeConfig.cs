@@ -8,6 +8,12 @@ namespace StackFall.TubeSystem
 	public class TubeConfig
 	{
 		[field: SerializeField] public SizeInt Size { get; private set; }
-		[field: SerializeField, Range(10f, 500f)] public float RotationSpeed { get; private set; }
+
+		public void InitHeight(int height)
+		{
+			var size = Size;
+			size.Height = height;
+			Size = size;
+		}
 	}
 }

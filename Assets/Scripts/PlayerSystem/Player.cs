@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StackFall.Gravity;
+using UnityEngine;
 
 namespace StackFall.PlayerSystem
 {
@@ -22,20 +23,24 @@ namespace StackFall.PlayerSystem
 			_customGravity.InitGravityScale(playerConfig.GravityScale);
 		}
 
-		public void ApplyGravity()
+		private void Update()
 		{
-			_customGravity.ApplyGravity();
-		}
+			if (Input.GetMouseButton(0)) 
+				FallDown();
 
-		public void FallDown()
-		{
-			_rigidbody.velocity = new Vector3(0f, -_playerConfig.FallDownSpeed, 0f);
-			IsNotFallingDown = false;
+			if (Input.GetMouseButtonUp(0)) 
+				IsNotFallingDown = true;
 		}
 
 		public void Jump()
 		{
 			_rigidbody.velocity = new Vector3(0f, _playerConfig.JumpPower, 0f);
+		}
+
+		private void FallDown()
+		{
+			_rigidbody.velocity = new Vector3(0f, -_playerConfig.FallDownSpeed, 0f);
+			IsNotFallingDown = false;
 		}
 	}
 }
