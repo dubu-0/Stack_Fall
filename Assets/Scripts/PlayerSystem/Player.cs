@@ -1,4 +1,6 @@
-﻿using StackFall.Gravity;
+﻿using System;
+using StackFall.Gravity;
+using StackFall.LevelSystem;
 using UnityEngine;
 
 namespace StackFall.PlayerSystem
@@ -15,13 +17,15 @@ namespace StackFall.PlayerSystem
 
 		public bool IsNotFallingDown { get; set; } = true;
 
+		public event Action<float> OnStartFalling;
+
 		public void Initialize(PlayerConfig playerConfig)
 		{
+			_playerConfig = playerConfig;
 			_rigidbody = GetComponent<Rigidbody>();
 			_customGravity = GetComponent<CustomGravity>();
 			_animator = GetComponent<Animator>();
-			_playerConfig = playerConfig;
-			
+
 			_customGravity.Initialize();
 			_customGravity.InitGravityScale(playerConfig.GravityScale);
 		}
@@ -49,6 +53,7 @@ namespace StackFall.PlayerSystem
 
 		private void FallDown()
 		{
+			OnStartFalling?.Invoke((_playerConfig.SpawnPosition.y - transform.position.y) / _playerConfig.SpawnPosition.y);
 			_rigidbody.velocity = new Vector3(0f, -_playerConfig.FallDownSpeed, 0f);
 			IsNotFallingDown = false;
 		}

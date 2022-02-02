@@ -13,30 +13,30 @@ namespace StackFall.PlayerSystem
 		[SerializeField] private Player _playerPrefab;
 		[SerializeField] private PlayerConfig _playerConfig;
 
-		public Player PlayerPrefab { get; private set; }
+		public Player Player { get; private set; }
 		public PlayerConfig PlayerConfig => _playerConfig;
 		public PlayerCollisionHandler PlayerCollisionHandler { get; private set; }
 		public PlayerEventController PlayerEventController { get; private set; }
 
-		public void Initialize(Vector3 spawnPosition, SceneLoader sceneLoader, LevelCounter levelCounter,
+		public void Initialize(SceneLoader sceneLoader, LevelCounter levelCounter,
 			ParticleSystemSpawner particleSystemSpawner)
 		{
-			InitializePlayer(spawnPosition);
+			InitializePlayer();
 			InitializePlayerCollisionHandler();
 			InitializePlayerEventController(sceneLoader, levelCounter, particleSystemSpawner);
 		}
 
-		private void InitializePlayer(Vector3 position)
+		private void InitializePlayer()
 		{
-			PlayerPrefab = (Player) PrefabUtility.InstantiatePrefab(_playerPrefab);
+			Player = (Player) PrefabUtility.InstantiatePrefab(_playerPrefab);
 
-			PlayerPrefab.transform.position = position;
-			PlayerPrefab.Initialize(_playerConfig);
+			Player.transform.position = _playerConfig.SpawnPosition;
+			Player.Initialize(_playerConfig);
 		}
 
 		private void InitializePlayerCollisionHandler()
 		{
-			PlayerCollisionHandler = PlayerPrefab.GetComponent<PlayerCollisionHandler>();
+			PlayerCollisionHandler = Player.GetComponent<PlayerCollisionHandler>();
 			PlayerCollisionHandler.Initialize();
 		}
 

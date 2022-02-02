@@ -1,3 +1,4 @@
+using System;
 using StackFall.Cam;
 using StackFall.Fx;
 using StackFall.LevelSystem;
@@ -19,7 +20,9 @@ namespace StackFall
 		[SerializeField] private PlayerSystemInitializer _playerSystemInitializer;
 		[SerializeField] private CameraInitializer _cameraInitializer;
 		[SerializeField] private SpritePrinterInitializer _spritePrinterInitializer;
-		[SerializeField] private FxInitializer _fxInitializer;
+		[SerializeField] private GameUI _gameUI;
+
+		private SpritePrinterController _spritePrinterController;
 
 		private void Awake()
 		{
@@ -30,18 +33,21 @@ namespace StackFall
 			InitializeCamera();
 			InitializeSpritePrinter();
 			InitializeFxController();
+			InitializeGameUI();
 		}
 
 		private void OnEnable()
 		{
-			_fxInitializer.FXController.Subscribe();
+			_spritePrinterController.Subscribe();
 			_playerSystemInitializer.PlayerEventController.Subscribe();
+			_gameUI.Subscribe();
 		}
 
 		private void OnDisable()
 		{
-			_fxInitializer.FXController.Unsubscribe();
+			_spritePrinterController.Unsubscribe();
 			_playerSystemInitializer.PlayerEventController.Unsubscribe();
+			_gameUI.Unsubscribe();
 		}
 
 		private void InitializeLevelSystem()
@@ -71,16 +77,18 @@ namespace StackFall
 		private void InitializePlayer(int tubeHeight, float shapeWidth)
 		{
 			var spawnPosition = new Vector3(0, tubeHeight * 2, -shapeWidth * 1.2f);
+			_playerSystemInitializer.PlayerConfig.InitSpawnPosition(spawnPosition);
+			
 			var sceneLoader = new SceneLoader();
 			var particleSystemSpawner =
 				new ParticleSystemSpawner(_playerSystemInitializer.PlayerConfig.ParticleSystemPrefab);
-			_playerSystemInitializer.Initialize(spawnPosition, sceneLoader, _levelSystemInitializer.LevelCounter,
+			_playerSystemInitializer.Initialize(sceneLoader, _levelSystemInitializer.LevelCounter,
 				particleSystemSpawner);
 		}
 
 		private void InitializeCamera()
 		{
-			_cameraInitializer.Initialize(_playerSystemInitializer.PlayerPrefab.transform);
+			_cameraInitializer.Initialize(_playerSystemInitializer.Player.transform);
 		}
 
 		private void InitializeSpritePrinter()
@@ -90,8 +98,13 @@ namespace StackFall
 
 		private void InitializeFxController()
 		{
-			_fxInitializer.Initialize(_playerSystemInitializer.PlayerCollisionHandler,
+			_spritePrinterController = new SpritePrinterController(_playerSystemInitializer.PlayerCollisionHandler,
 				_spritePrinterInitializer.SpritePrinterPrefab);
+		}
+
+		private void InitializeGameUI()
+		{
+			_gameUI.Initialize(_levelSystemInitializer.LevelCounter, _playerSystemInitializer.Player);
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace StackFall.LevelSystem
 {
@@ -7,6 +8,8 @@ namespace StackFall.LevelSystem
 		private const string Key = nameof(_current);
 		private int _current = 1;
 
+		public event Action<int> OnLevelChanged;
+		
 		public int GetCurrent()
 		{
 			return _current;
@@ -15,12 +18,14 @@ namespace StackFall.LevelSystem
 		public void Increment()
 		{
 			_current++;
+			OnLevelChanged?.Invoke(_current);
 			Save();
 		}
 
 		public void Reset()
 		{
 			_current = 1;
+			OnLevelChanged?.Invoke(_current);
 			Save();
 		}
 
@@ -33,6 +38,7 @@ namespace StackFall.LevelSystem
 		public void Load()
 		{
 			_current = PlayerPrefs.GetInt(Key, _current);
+			OnLevelChanged?.Invoke(_current);
 		}
 	}
 }

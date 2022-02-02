@@ -8,7 +8,7 @@ namespace StackFall.LevelSystem
 	{
 		public LevelDifficulty LevelDifficulty { get; private set; }
 		public LevelCounter LevelCounter { get; private set; }
-
+		
 		public void Initialize()
 		{
 			InitializeLevelCounter();
@@ -19,7 +19,6 @@ namespace StackFall.LevelSystem
 		{
 			LevelCounter = new LevelCounter();
 			LevelCounter.Load();
-			Debug.Log(LevelCounter.GetCurrent());
 		}
 
 		private void InitializeLevelDifficulty()
