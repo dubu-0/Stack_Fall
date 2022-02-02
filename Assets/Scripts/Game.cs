@@ -1,57 +1,97 @@
 using StackFall.Cam;
 using StackFall.Fx;
 using StackFall.LevelSystem;
+using StackFall.ParticleSystems;
 using StackFall.PlayerSystem;
 using StackFall.Printers;
+using StackFall.SceneManagement;
 using StackFall.Shapes;
 using StackFall.TubeSystem;
 using UnityEngine;
 
 namespace StackFall
 {
-    public class Game : MonoBehaviour
-    {
-        [SerializeField] private LevelSystemInitializer _levelSystemInitializer;
-        [SerializeField] private ShapeSpawnerInitializer _shapeSpawnerInitializer;
-        [SerializeField] private TubeSystemInitializer _tubeSystemInitializer;
-        [SerializeField] private PlayerSystemInitializer _playerSystemInitializer;
-        [SerializeField] private CameraInitializer _cameraInitializer;
-        [SerializeField] private SpritePrinterInitializer _spritePrinterInitializer;
-        [SerializeField] private FxInitializer _fxInitializer;
+	public class Game : MonoBehaviour
+	{
+		[SerializeField] private LevelSystemInitializer _levelSystemInitializer;
+		[SerializeField] private ShapeSpawnerInitializer _shapeSpawnerInitializer;
+		[SerializeField] private TubeSystemInitializer _tubeSystemInitializer;
+		[SerializeField] private PlayerSystemInitializer _playerSystemInitializer;
+		[SerializeField] private CameraInitializer _cameraInitializer;
+		[SerializeField] private SpritePrinterInitializer _spritePrinterInitializer;
+		[SerializeField] private FxInitializer _fxInitializer;
 
-        private void Awake()
-        {
-            _levelSystemInitializer.Initialize();
+		private void Awake()
+		{
+			InitializeLevelSystem();
+			InitializeShapeSpawner(out var shapeWidth);
+			InitializeTube(out var tubeHeight);
+			InitializePlayer(tubeHeight, shapeWidth);
+			InitializeCamera();
+			InitializeSpritePrinter();
+			InitializeFxController();
+		}
 
-            _shapeSpawnerInitializer.Initialize(
-                _levelSystemInitializer.LevelDifficulty.GetShapeTypesForCurrentDifficulty(),
-                _tubeSystemInitializer.TubeConfig.Size.Width * 0.7f,
-                Mathf.FloorToInt(
-                    _levelSystemInitializer.LevelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeSystemInitializer
-                        .TubeConfig.Size.Height) * 0.75f / _shapeSpawnerInitializer.ShapeConfig.Height *
-                    _shapeSpawnerInitializer.ShapeConfig.Height));
+		private void OnEnable()
+		{
+			_fxInitializer.FXController.Subscribe();
+			_playerSystemInitializer.PlayerEventController.Subscribe();
+		}
 
-            _tubeSystemInitializer.Initialize(
-                _levelSystemInitializer.LevelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeSystemInitializer
-                    .TubeConfig.Size.Height));
-            
-            _playerSystemInitializer.Initialize(new Vector3(0, _tubeSystemInitializer.TubeConfig.Size.Height * 2, -4.85f));
-            
-            _cameraInitializer.Initialize(_playerSystemInitializer.Player.transform);
-            
-            _spritePrinterInitializer.Initialize();
-            
-            _fxInitializer.Initialize(_playerSystemInitializer.PlayerCollisionHandler, _spritePrinterInitializer.SpritePrinterPrefab);
-        }
+		private void OnDisable()
+		{
+			_fxInitializer.FXController.Unsubscribe();
+			_playerSystemInitializer.PlayerEventController.Unsubscribe();
+		}
 
-        private void OnEnable()
-        {
-            _fxInitializer.FXController.Subscribe();
-        }
+		private void InitializeLevelSystem()
+		{
+			_levelSystemInitializer.Initialize();
+		}
 
-        private void OnDisable()
-        {
-            _fxInitializer.FXController.Unsubscribe();
-        }
-    }
+		private void InitializeShapeSpawner(out float shapeWidth)
+		{
+			var shapeTypes = _levelSystemInitializer.LevelDifficulty.GetShapeTypesForCurrentDifficulty();
+			shapeWidth = _tubeSystemInitializer.TubeConfig.Size.Width * 0.7f;
+			var shapeAmount = Mathf.FloorToInt(
+				_levelSystemInitializer.LevelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeSystemInitializer
+					.TubeConfig.Size.Height) * 0.75f / _shapeSpawnerInitializer.ShapeConfig.Height *
+				_shapeSpawnerInitializer.ShapeConfig.Height);
+			_shapeSpawnerInitializer.Initialize(shapeTypes, shapeWidth, shapeAmount);
+		}
+
+		private void InitializeTube(out int tubeHeight)
+		{
+			tubeHeight = _levelSystemInitializer.LevelDifficulty.GetTubeHeightForCurrentDifficulty(
+				_tubeSystemInitializer
+					.TubeConfig.Size.Height);
+			_tubeSystemInitializer.Initialize(tubeHeight);
+		}
+
+		private void InitializePlayer(int tubeHeight, float shapeWidth)
+		{
+			var spawnPosition = new Vector3(0, tubeHeight * 2, -shapeWidth * 1.2f);
+			var sceneLoader = new SceneLoader();
+			var particleSystemSpawner =
+				new ParticleSystemSpawner(_playerSystemInitializer.PlayerConfig.ParticleSystemPrefab);
+			_playerSystemInitializer.Initialize(spawnPosition, sceneLoader, _levelSystemInitializer.LevelCounter,
+				particleSystemSpawner);
+		}
+
+		private void InitializeCamera()
+		{
+			_cameraInitializer.Initialize(_playerSystemInitializer.PlayerPrefab.transform);
+		}
+
+		private void InitializeSpritePrinter()
+		{
+			_spritePrinterInitializer.Initialize();
+		}
+
+		private void InitializeFxController()
+		{
+			_fxInitializer.Initialize(_playerSystemInitializer.PlayerCollisionHandler,
+				_spritePrinterInitializer.SpritePrinterPrefab);
+		}
+	}
 }

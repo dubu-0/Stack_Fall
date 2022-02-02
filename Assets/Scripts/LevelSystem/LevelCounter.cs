@@ -15,6 +15,7 @@ namespace StackFall.LevelSystem
 		public void Increment()
 		{
 			_current++;
+			Save();
 		}
 
 		public void Reset()

@@ -189,7 +189,7 @@ Transform:
   m_Children:
   - {fileID: 2076962587}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &265379716
 MonoBehaviour:
@@ -294,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -493,7 +493,7 @@ MonoBehaviour:
         _min: 3.66
         _max: 7.61
       <ShapePartConfig>k__BackingField:
-        _colorCollection: {fileID: 11400000, guid: 167a3dc4ff9a1fd4da284b5ba3c99737,
+        _colorCollection: {fileID: 11400000, guid: ddc322cb3583e794b826a7be7501b434,
           type: 2}
         <FlyOffForce>k__BackingField:
           _min: 88.14
@@ -516,6 +516,8 @@ MonoBehaviour:
     _playerPrefab: {fileID: 5551884115536636616, guid: f947b70bb72c0984abcfc68e6fc17e5c,
       type: 3}
     _playerConfig:
+      <ParticleSystemPrefab>k__BackingField: {fileID: 9117336293662915077, guid: 444a6f6412e096d48a21a1a25a6dd849,
+        type: 3}
       <JumpPower>k__BackingField: 38
       <GravityScale>k__BackingField: 12
       <FallDownSpeed>k__BackingField: 60
@@ -543,7 +545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076962586
 GameObject:

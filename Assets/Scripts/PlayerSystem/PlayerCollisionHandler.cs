@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using StackFall.Shapes;
 using StackFall.Shapes.Parts;
 using UnityEngine;
@@ -20,40 +21,36 @@ namespace StackFall.PlayerSystem
 		
 		private void OnCollisionEnter(Collision collision)
 		{
-			if (IsNotCollidedWith(collision, out ShapePart shapePart)) 
+			if (IsNotCollidedWith(collision, out ShapePart shapePart))
+			{
+				HandleCollisionWithWinPlatform();
 				return;
-			
-			OnShapePartTouched?.Invoke(collision.transform, collision.GetContact(collision.contactCount - 1).point);
+			}
+
+			OnShapePartTouched?.Invoke(transform, Vector3.zero);
 			
 			if (_player.IsNotFallingDown) 
 				return;
 
 			HandleFallWith(shapePart);
-
-			if (IsNotCollidedWith(collision, out WinPlatform winPlatform)) 
-				return;
-			
-			HandleCollisionWith(winPlatform);
 		}
 		
 		private void OnCollisionStay()
 		{
 			_player.Jump();
 		}
-		
+
 		private bool IsNotCollidedWith(Collision collision, out ShapePart shapePart)
 		{
-			if (!collision.gameObject.TryGetComponent(out shapePart)) return true;
-			return false;
+			return !collision.gameObject.TryGetComponent(out shapePart);
 		}
 
 		private bool IsNotCollidedWith(Collision collision, out WinPlatform winPlatform)
 		{
-			if (!collision.gameObject.TryGetComponent(out winPlatform)) return true;
-			return false;
+			return !collision.gameObject.TryGetComponent(out winPlatform);
 		}
 
-		private void HandleCollisionWith(WinPlatform winPlatform)
+		private void HandleCollisionWithWinPlatform()
 		{
 			OnWinPlatformTouched?.Invoke();
 		}

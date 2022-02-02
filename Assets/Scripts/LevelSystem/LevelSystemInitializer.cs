@@ -6,9 +6,8 @@ namespace StackFall.LevelSystem
 	[Serializable]
 	public class LevelSystemInitializer
 	{
-		private LevelCounter _levelCounter;
-
 		public LevelDifficulty LevelDifficulty { get; private set; }
+		public LevelCounter LevelCounter { get; private set; }
 
 		public void Initialize()
 		{
@@ -18,14 +17,14 @@ namespace StackFall.LevelSystem
 
 		private void InitializeLevelCounter()
 		{
-			_levelCounter = new LevelCounter();
-			_levelCounter.Load();
-			Debug.Log(_levelCounter.GetCurrent());
+			LevelCounter = new LevelCounter();
+			LevelCounter.Load();
+			Debug.Log(LevelCounter.GetCurrent());
 		}
 
 		private void InitializeLevelDifficulty()
 		{
-			LevelDifficulty = new LevelDifficulty(_levelCounter);
+			LevelDifficulty = new LevelDifficulty(LevelCounter);
 		}
 	}
 }

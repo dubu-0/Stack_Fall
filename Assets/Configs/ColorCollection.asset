@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f96d08b416743858fb3d4c99a73ccaf, type: 3}
-  m_Name: BackgroundCollection
+  m_Name: ColorCollection
   m_EditorClassIdentifier: 
   _colors:
   - {r: 0.8862746, g: 0.44705886, b: 0.3137255, a: 1}
@@ -22,3 +22,6 @@ MonoBehaviour:
   - {r: 1, g: 0.427451, b: 0.427451, a: 1}
   - {r: 0.427451, g: 0.63529414, b: 1, a: 1}
   - {r: 0.7176471, g: 0.36078432, b: 0.627451, a: 1}
+  - {r: 0.73333335, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.43137258, b: 0.2509804, a: 1}
+  - {r: 0.50980395, g: 0.6313726, b: 0.8117648, a: 1}

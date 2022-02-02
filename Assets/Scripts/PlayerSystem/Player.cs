@@ -10,6 +10,8 @@ namespace StackFall.PlayerSystem
 		private Rigidbody _rigidbody;
 		private PlayerConfig _playerConfig;
 		private CustomGravity _customGravity;
+		private Animator _animator;
+		private static readonly int Speed = Animator.StringToHash("Speed");
 
 		public bool IsNotFallingDown { get; set; } = true;
 
@@ -17,6 +19,7 @@ namespace StackFall.PlayerSystem
 		{
 			_rigidbody = GetComponent<Rigidbody>();
 			_customGravity = GetComponent<CustomGravity>();
+			_animator = GetComponent<Animator>();
 			_playerConfig = playerConfig;
 			
 			_customGravity.Initialize();
@@ -30,6 +33,13 @@ namespace StackFall.PlayerSystem
 
 			if (Input.GetMouseButtonUp(0)) 
 				IsNotFallingDown = true;
+			
+			AnimateScale();
+		}
+
+		private void AnimateScale()
+		{
+			_animator.SetFloat(Speed, _rigidbody.velocity.magnitude);
 		}
 
 		public void Jump()

@@ -14,14 +14,17 @@ namespace StackFall.Shapes.Parts.Config
 		[field: SerializeField, FloatRangeSlider(0f, 5f)] public FloatRange UpwardsModifier { get; private set; }
 		[field: SerializeField] public ForceMode ExplosionForceMode { get; private set; }
 
-		private static Color _sharedColor;
+		private Color _color;
 		
 		public Color GetRandomColor()
 		{
-			if (_sharedColor == default)
-				_sharedColor = _colorCollection.GetRandom();
+			if (_color == default)
+				_color = _colorCollection.GetRandom();
 
-			return _sharedColor;
+			const float offset = 0.0005f;
+			var colorWithOffset = new Color(_color.r + offset, _color.g + offset, _color.b + offset);
+			
+			return colorWithOffset;
 		}
 	}
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5551884115536636617}
   - component: {fileID: 2705869632586769316}
+  - component: {fileID: -1726565171117295554}
   - component: {fileID: 5551884115536636616}
   - component: {fileID: 6223265750746370544}
   - component: {fileID: 7295791292489803624}
@@ -49,8 +50,27 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 10
+  m_Constraints: 122
   m_CollisionDetection: 1
+--- !u!95 &-1726565171117295554
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551884115536636630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0dae2d630049d9f41973bfb3088a9428, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5551884115536636616
 MonoBehaviour:
   m_ObjectHideFlags: 0
