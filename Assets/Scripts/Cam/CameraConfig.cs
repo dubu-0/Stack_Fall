@@ -14,7 +14,7 @@ namespace StackFall.Cam
 
 		public Transform TargetToFollow { get; private set; }
 		public CameraClearFlags ClearFlags => CameraClearFlags.SolidColor;
-		public bool IsOrthographic => true;
+		public bool IsOrthographic => false;
 		public Color Background => _backgroundCollection.GetPreviousRandom();
 
 		public void InitTargetToFollow(Transform targetToFollow)

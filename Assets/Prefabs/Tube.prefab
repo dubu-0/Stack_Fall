@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c905e81ac3d4369af73e4d5d40121c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Rotator>k__BackingField: {fileID: 0}
 --- !u!1 &7134072841974015080
 GameObject:
   m_ObjectHideFlags: 0
