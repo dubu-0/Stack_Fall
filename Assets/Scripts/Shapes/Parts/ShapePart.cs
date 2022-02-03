@@ -19,9 +19,9 @@ namespace StackFall.Shapes.Parts
 			_shapePartConfig = shapePartConfig;
 			_collider = GetComponent<Collider>();
 			_rigidbody = GetComponent<Rigidbody>();
-			
-			if (!_isBlack)
-				GetComponent<MeshRenderer>().material.color = _shapePartConfig.GetRandomColor();
+
+			if (_isBlack) return;
+			GetComponent<MeshRenderer>().material.color = _shapePartConfig.GetRandomColor();
 		}
 		
 		public bool IsBlack => _isBlack;
