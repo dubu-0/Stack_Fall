@@ -1,5 +1,6 @@
 ﻿using System;
 using StackFall.Colors;
+using StackFall.Skyboxes;
 using UnityEngine;
 
 namespace StackFall.Cam
@@ -7,21 +8,21 @@ namespace StackFall.Cam
 	[Serializable]
 	public class CameraConfig
 	{
-		[SerializeField] private ColorCollection _backgroundCollection;
+		[SerializeField] private SkyboxCollection _skyboxCollection;
 		[field: SerializeField, Range(10, 30)] public int Size { get; private set; }
 		[field: SerializeField] public Vector3 PositionOffset { get; private set; }
 		[field: SerializeField] public Vector3 RotationOffset { get; private set; }
 
 		public Transform TargetToFollow { get; private set; }
-		public CameraClearFlags ClearFlags => CameraClearFlags.SolidColor;
+		public CameraClearFlags ClearFlags => CameraClearFlags.Skybox;
 		public bool IsOrthographic => false;
-		public Color Background => _backgroundCollection.GetPreviousRandom();
+		public Material Skybox => _skyboxCollection.GetRandom();
 
 		public void InitTargetToFollow(Transform targetToFollow)
 		{
 			if (TargetToFollow != null)
 				throw new Exception("Already inited");
-
+			
 			TargetToFollow = targetToFollow;
 		}
 	}

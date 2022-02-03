@@ -14,9 +14,10 @@ namespace StackFall.Cam
 			_camera = GetComponent<Camera>();
 
 			_camera.clearFlags = _cameraConfig.ClearFlags;
-			_camera.backgroundColor = _cameraConfig.Background;
 			_camera.orthographic = _cameraConfig.IsOrthographic;
 			_camera.orthographicSize = _cameraConfig.Size;
+
+			RenderSettings.skybox = _cameraConfig.Skybox;
 		}
 	}
 }

@@ -26,7 +26,7 @@ namespace StackFall.PlayerSystem
 				return;
 			}
 
-			OnShapePartTouched?.Invoke(transform, Vector3.zero);
+			OnShapePartTouched?.Invoke(shapePart.transform, collision.GetContact(0).point);
 			
 			if (_player.IsNotFallingDown) 
 				return;
@@ -42,11 +42,6 @@ namespace StackFall.PlayerSystem
 		private bool IsNotCollidedWith(Collision collision, out ShapePart shapePart)
 		{
 			return !collision.gameObject.TryGetComponent(out shapePart);
-		}
-
-		private bool IsNotCollidedWith(Collision collision, out WinPlatform winPlatform)
-		{
-			return !collision.gameObject.TryGetComponent(out winPlatform);
 		}
 
 		private void HandleCollisionWithWinPlatform()

@@ -15,7 +15,7 @@ namespace StackFall.ParticleSystems
 		public void Spawn(Transform parent, Vector3 position)
 		{
 			var particleSystem = (ParticleSystem) PrefabUtility.InstantiatePrefab(_particleSystemPrefab, parent);
-			particleSystem.transform.localPosition = position;
+			particleSystem.transform.position = position;
 			particleSystem.Play();
 		}
 	}
