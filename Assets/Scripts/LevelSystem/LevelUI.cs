@@ -1,26 +1,26 @@
 ﻿using StackFall.PlayerSystem;
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace StackFall.LevelSystem
 {
 	public class LevelUI
 	{
-		private readonly LevelCounter _levelCounter;
-		private readonly Player _player;
 		private readonly TextMeshProUGUI _currentLevel;
+		private readonly LevelCounter _levelCounter;
+		private readonly Slider _levelProgression;
 		private readonly TextMeshProUGUI _nextLevel;
-		private readonly Slider _slider;
+		private readonly PlayerCollisionHandler _playerCollisionHandler;
 
-		public LevelUI(LevelCounter levelCounter, TextMeshProUGUI currentLevel, TextMeshProUGUI nextLevel, Player player, Slider slider)
+		public LevelUI(LevelCounter levelCounter, TextMeshProUGUI currentLevel, TextMeshProUGUI nextLevel,
+			PlayerCollisionHandler playerCollisionHandler, Slider levelProgression)
 		{
 			_levelCounter = levelCounter;
-			_player = player;
-			
+			_playerCollisionHandler = playerCollisionHandler;
+
 			_currentLevel = currentLevel;
 			_nextLevel = nextLevel;
-			_slider = slider;
+			_levelProgression = levelProgression;
 
 			_currentLevel.text = _levelCounter.GetCurrent().ToString();
 			_nextLevel.text = (_levelCounter.GetCurrent() + 1).ToString();
@@ -30,30 +30,29 @@ namespace StackFall.LevelSystem
 		{
 			_levelCounter.OnLevelChanged += UpdateCurrentLevel;
 			_levelCounter.OnLevelChanged += UpdateNextLevel;
-			_player.OnStartFalling += UpdateSlider;
+			_playerCollisionHandler.OnShapePartBroken += UpdateLevelProgression;
 		}
-		
+
 		public void Unsubscribe()
 		{
 			_levelCounter.OnLevelChanged -= UpdateCurrentLevel;
 			_levelCounter.OnLevelChanged -= UpdateNextLevel;
-			_player.OnStartFalling -= UpdateSlider;
+			_playerCollisionHandler.OnShapePartBroken -= UpdateLevelProgression;
 		}
 
 		private void UpdateCurrentLevel(int current)
 		{
 			_currentLevel.text = current.ToString();
-			Debug.Log($"{this}: {current}");
 		}
-		
+
 		private void UpdateNextLevel(int current)
 		{
 			_nextLevel.text = (current + 1).ToString();
 		}
 
-		public void UpdateSlider(float value)
+		private void UpdateLevelProgression(float value)
 		{
-			_slider.value = value;
+			_levelProgression.value = value;
 		}
 	}
 }

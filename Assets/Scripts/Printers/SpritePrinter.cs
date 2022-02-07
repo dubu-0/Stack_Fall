@@ -11,12 +11,13 @@ namespace StackFall.Printers
 		{
 			_spriteRenderer = GetComponent<SpriteRenderer>();
 		}
-		
+
 		public void Print(Transform container, Vector3 position)
 		{
 			var print = Instantiate(_spriteRenderer, container, false);
 			print.transform.position = position;
-			print.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+			var randomScale = Random.Range(0.12f, 0.25f);
+			print.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
 			print.transform.position += new Vector3(0f, 0.25f, 0f);
 
 			var randomRotation = Random.rotation.eulerAngles;

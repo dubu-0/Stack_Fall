@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace StackFall.Ranges.Float
 {
@@ -10,6 +11,6 @@ namespace StackFall.Ranges.Float
 		[SerializeField] private float _min;
 		[SerializeField] private float _max;
 
-		public float GetRandom => UnityEngine.Random.Range(_min, _max);
+		public float GetRandom => Random.Range(_min, _max);
 	}
 }

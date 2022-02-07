@@ -9,39 +9,43 @@ namespace StackFall.PlayerSystem
 	{
 		private Player _player;
 
-		public void Initialize()
+		private void OnCollisionStay(Collision collisionInfo)
 		{
-			_player = GetComponent<Player>();
+			if (_player.IsNotFallingDown)
+			{
+				OnShapePartTouched?.Invoke(collisionInfo.transform,
+					collisionInfo.collider.ClosestPointOnBounds(transform.position));
+				_player.Jump();
+			}
 		}
-		
-		public event Action OnBlackPartTouched;
-		public event Action OnWinPlatformTouched;
-		public event Action<Transform, Vector3> OnShapePartTouched;
-		
-		private void OnCollisionEnter(Collision collision)
+
+		private void OnTriggerEnter(Collider other)
 		{
-			if (IsNotCollidedWith(collision, out ShapePart shapePart))
+			if (IsNotCollidedWith(other, out var shapePart))
 			{
 				HandleCollisionWithWinPlatform();
 				return;
 			}
 
-			OnShapePartTouched?.Invoke(shapePart.transform, collision.GetContact(0).point);
-			
-			if (_player.IsNotFallingDown) 
+			if (_player.IsNotFallingDown)
 				return;
 
 			HandleFallWith(shapePart);
 		}
-		
-		private void OnCollisionStay()
+
+		public void Initialize()
 		{
-			_player.Jump();
+			_player = GetComponent<Player>();
 		}
 
-		private bool IsNotCollidedWith(Collision collision, out ShapePart shapePart)
+		public event Action OnBlackPartTouched;
+		public event Action OnWinPlatformTouched;
+		public event Action<Transform, Vector3> OnShapePartTouched;
+		public event Action<float> OnShapePartBroken;
+
+		private bool IsNotCollidedWith(Collider other, out ShapePart shapePart)
 		{
-			return !collision.gameObject.TryGetComponent(out shapePart);
+			return !other.gameObject.TryGetComponent(out shapePart);
 		}
 
 		private void HandleCollisionWithWinPlatform()
@@ -51,12 +55,24 @@ namespace StackFall.PlayerSystem
 
 		private void HandleFallWith(ShapePart shapePart)
 		{
-			if (shapePart.IsBlack)
-				OnBlackPartTouched?.Invoke();
-			else
+			if (_player.BurningCoroutine != default)
+			{
 				shapePart.GetComponentInParent<Shape>().Explode();
-
-			_player.IsNotFallingDown = true;
+				OnShapePartBroken?.Invoke(1 - shapePart.transform.position.y / _player.PlayerConfig.SpawnPosition.y);
+			}
+			else
+			{
+				if (shapePart.IsBlack)
+				{
+					OnBlackPartTouched?.Invoke();
+				}
+				else
+				{
+					shapePart.GetComponentInParent<Shape>().Explode();
+					OnShapePartBroken?.Invoke(1 - shapePart.transform.position.y /
+						_player.PlayerConfig.SpawnPosition.y);
+				}
+			}
 		}
 	}
 }

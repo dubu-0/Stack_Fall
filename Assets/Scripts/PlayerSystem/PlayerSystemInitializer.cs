@@ -29,7 +29,7 @@ namespace StackFall.PlayerSystem
 		private void InitializePlayer()
 		{
 			Player = (Player) PrefabUtility.InstantiatePrefab(_playerPrefab);
-
+			PrefabUtility.InstantiatePrefab(PlayerConfig.PlayerOnFirePrefab, Player.transform);
 			Player.transform.position = _playerConfig.SpawnPosition;
 			Player.Initialize(_playerConfig);
 		}
@@ -43,8 +43,10 @@ namespace StackFall.PlayerSystem
 		private void InitializePlayerEventController(SceneLoader sceneLoader, LevelCounter levelCounter,
 			ParticleSystemSpawner particleSystemSpawner)
 		{
-			PlayerEventController = new PlayerEventController(PlayerCollisionHandler, sceneLoader, levelCounter,
-				particleSystemSpawner);
+			_playerConfig.PlayerSound.Initialize(Player.GetComponent<AudioSource>());
+
+			PlayerEventController = new PlayerEventController(PlayerCollisionHandler, Player, sceneLoader, levelCounter,
+				particleSystemSpawner, _playerConfig.PlayerBurnIndicator, _playerConfig.PlayerSound);
 		}
 	}
 }

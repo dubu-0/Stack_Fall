@@ -9,10 +9,12 @@ namespace StackFall.Shapes.Parts
 	public class ShapePart : MonoBehaviour
 	{
 		[SerializeField] private bool _isBlack;
-
-		private ShapePartConfig _shapePartConfig;
 		private Collider _collider;
 		private Rigidbody _rigidbody;
+
+		private ShapePartConfig _shapePartConfig;
+
+		public bool IsBlack => _isBlack;
 
 		public void Initialize(ShapePartConfig shapePartConfig)
 		{
@@ -23,8 +25,6 @@ namespace StackFall.Shapes.Parts
 			if (_isBlack) return;
 			GetComponent<MeshRenderer>().material.color = _shapePartConfig.GetRandomColor();
 		}
-		
-		public bool IsBlack => _isBlack;
 
 		public void FlyOff()
 		{
@@ -43,7 +43,7 @@ namespace StackFall.Shapes.Parts
 			                 GetNormalizedHorizontalPositionRelativeToParent()).normalized;
 			return direction;
 		}
-		
+
 		private Vector3 GetNormalizedHorizontalPositionRelativeToParent()
 		{
 			var parentPosition = transform.parent.position;

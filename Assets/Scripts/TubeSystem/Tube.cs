@@ -6,22 +6,22 @@ namespace StackFall.TubeSystem
 	[SelectionBase]
 	public class Tube : MonoBehaviour
 	{
-		private TubeView _view;
 		private FinishPlatform _finishPlatform;
 		private TubeConfig _tubeConfig;
+		private TubeView _view;
 
 		public void Initialize(TubeConfig tubeConfig)
 		{
 			_tubeConfig = tubeConfig;
-			
+
 			_view = GetComponentInChildren<TubeView>();
 			_finishPlatform = GetComponentInChildren<FinishPlatform>();
-			
-			// previous: _tubeConfig.Size.Width, _levelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeConfig.Size.Height)
-			
-			_view.SetLocalScale(_tubeConfig.Size);
 
-			_finishPlatform.SetLocalScale(_tubeConfig.Size);
+			// previous: _tubeConfig.Size.Width, _levelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeConfig.Size.Height)
+
+			_view.SetLocalScale(_tubeConfig.InitialSize);
+
+			_finishPlatform.SetLocalScale(_tubeConfig.InitialSize);
 		}
 	}
 }

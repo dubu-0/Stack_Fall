@@ -7,13 +7,13 @@ namespace StackFall.TubeSystem
 	[Serializable]
 	public class TubeConfig
 	{
-		[field: SerializeField] public SizeInt Size { get; private set; }
+		[field: SerializeField] public SizeInt InitialSize { get; private set; }
 
 		public void InitHeight(int height)
 		{
-			var size = Size;
+			var size = InitialSize;
 			size.Height = height;
-			Size = size;
+			InitialSize = size;
 		}
 	}
 }

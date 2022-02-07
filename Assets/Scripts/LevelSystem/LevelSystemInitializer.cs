@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace StackFall.LevelSystem
 {
@@ -8,7 +7,7 @@ namespace StackFall.LevelSystem
 	{
 		public LevelDifficulty LevelDifficulty { get; private set; }
 		public LevelCounter LevelCounter { get; private set; }
-		
+
 		public void Initialize()
 		{
 			InitializeLevelCounter();

@@ -6,19 +6,19 @@ namespace StackFall.Gravity
 	[RequireComponent(typeof(Rigidbody))]
 	public class CustomGravity : MonoBehaviour
 	{
+		private readonly Vector3 _globalGravity = Physics.gravity;
 		private float _gravityScale;
 		private Rigidbody _rigidbody;
-		private readonly Vector3 _globalGravity = Physics.gravity;
+
+		private void FixedUpdate()
+		{
+			ApplyGravity();
+		}
 
 		public void Initialize()
 		{
 			_rigidbody = GetComponent<Rigidbody>();
 			_rigidbody.useGravity = false;
-		}
-
-		private void FixedUpdate()
-		{
-			ApplyGravity();
 		}
 
 		public void InitGravityScale(float value)

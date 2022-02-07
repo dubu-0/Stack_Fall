@@ -9,12 +9,12 @@ namespace StackFall.LevelSystem
 		private int _current = 1;
 
 		public event Action<int> OnLevelChanged;
-		
+
 		public int GetCurrent()
 		{
 			return _current;
 		}
-		
+
 		public void Increment()
 		{
 			_current++;

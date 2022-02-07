@@ -13,20 +13,20 @@ namespace StackFall.Shapes
 		[SerializeField] private ShapeConfig _shapeConfig;
 
 		public ShapeConfig ShapeConfig => _shapeConfig;
+
 		public ShapeSpawner ShapeSpawner { get; private set; }
 
-		public void Initialize(List<ShapeType> shapeTypes, float shapeWidth, int shapeAmount)
+		public void Initialize(List<ShapeType> shapeTypes, float shapeWidth, int shapeAmount, float rotationSpeed)
 		{
+			_shapeConfig.InitAmount(shapeAmount);
+
 			ShapeSpawner = (ShapeSpawner) PrefabUtility.InstantiatePrefab(_shapeSpawnerPrefab);
 
-			_shapeConfig.InitAmount(shapeAmount);
-            
 			ShapeSpawner.Initialize(_shapeConfig, shapeTypes);
-			ShapeSpawner.ResizeShapesHeightTo(_shapeConfig.Height);
 			ShapeSpawner.ResizeShapesWidthTo(shapeWidth);
 			ShapeSpawner.SpawnShapes();
 
-			ShapeSpawner.StartEndlessRotating(_shapeConfig.RotationSpeed);
+			ShapeSpawner.StartEndlessRotating(rotationSpeed);
 		}
 	}
 }

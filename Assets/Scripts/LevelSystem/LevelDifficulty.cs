@@ -6,11 +6,10 @@ namespace StackFall.LevelSystem
 {
 	public class LevelDifficulty
 	{
-		private readonly List<int> _levels = new List<int> { 20, 50, 100, 200, int.MaxValue };
-		private readonly LevelCounter _levelCounter;
-
 		private readonly int _currentDifficulty;
-		
+		private readonly LevelCounter _levelCounter;
+		private readonly List<int> _levels = new List<int> { 20, 50, 100, 200, int.MaxValue };
+
 		public LevelDifficulty(LevelCounter levelCounter)
 		{
 			_levelCounter = levelCounter;
@@ -52,7 +51,7 @@ namespace StackFall.LevelSystem
 		{
 			return minRotationSpeed + ScaledSquareRoot(_levelCounter.GetCurrent(), 18);
 		}
-		
+
 		public int GetTubeHeightForCurrentDifficulty(int minTubeHeight)
 		{
 			return Mathf.RoundToInt(minTubeHeight + ScaledSquareRoot(_levelCounter.GetCurrent(), 18));
@@ -61,10 +60,8 @@ namespace StackFall.LevelSystem
 		private int GetCurrentDifficulty()
 		{
 			for (var i = 0; i < _levels.Count; i++)
-			{
 				if (_levels[i] >= _levelCounter.GetCurrent())
 					return i + 1;
-			}
 
 			return 0;
 		}

@@ -7,15 +7,18 @@ namespace StackFall.Shapes
 	[SelectionBase]
 	public class Shape : MonoBehaviour
 	{
-		private ShapeConfig _shapeConfig;
+		private MeshRenderer _meshRenderer;
 		private ShapePart[] _parts;
+		private ShapeConfig _shapeConfig;
 
 		public void Initialize(ShapeConfig shapeConfig)
 		{
 			_shapeConfig = shapeConfig;
 			_parts = GetComponentsInChildren<ShapePart>();
-			
-			foreach (var shapePart in _parts) 
+			_meshRenderer = GetComponentInChildren<MeshRenderer>();
+			_shapeConfig.Height = _meshRenderer.bounds.size.y;
+
+			foreach (var shapePart in _parts)
 				shapePart.Initialize(_shapeConfig.ShapePartConfig);
 		}
 
@@ -27,16 +30,13 @@ namespace StackFall.Shapes
 		public void IndentPosition(float indent)
 		{
 			var currentPosition = transform.position;
-			currentPosition.y += indent * transform.localScale.y * 0.45f;
+			currentPosition.y += indent * _meshRenderer.bounds.size.y;
 			transform.position = currentPosition;
 		}
 
 		public void Explode()
 		{
-			foreach (var shapePart in _parts)
-			{
-				shapePart.FlyOff();
-			}
+			foreach (var shapePart in _parts) shapePart.FlyOff();
 
 			transform.SetParent(null);
 			Destroy(gameObject, 1f);

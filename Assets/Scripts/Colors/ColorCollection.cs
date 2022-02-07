@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace StackFall.Colors
 {
-	
 	[CreateAssetMenu(menuName = "Collections/Create ColorCollection", fileName = "ColorCollection", order = 0)]
 	public class ColorCollection : ScriptableObject
 	{

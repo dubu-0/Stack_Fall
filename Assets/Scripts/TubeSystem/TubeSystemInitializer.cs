@@ -9,7 +9,7 @@ namespace StackFall.TubeSystem
 	{
 		[SerializeField] private Tube _tubePrefab;
 		[SerializeField] private TubeConfig _tubeConfig;
-        
+
 		private Tube _tube;
 
 		public TubeConfig TubeConfig => _tubeConfig;

@@ -7,16 +7,16 @@ namespace StackFall.Ranges.RGB
 	[Serializable]
 	public struct RandomRGB
 	{
-		[SerializeField, FloatRangeSlider(0, 1)]
+		[SerializeField] [FloatRangeSlider(0, 1)]
 		private FloatRange _r;
 
-		[SerializeField, FloatRangeSlider(0, 1)]
+		[SerializeField] [FloatRangeSlider(0, 1)]
 		private FloatRange _g;
 
-		[SerializeField, FloatRangeSlider(0, 1)]
+		[SerializeField] [FloatRangeSlider(0, 1)]
 		private FloatRange _b;
 
-		[SerializeField, FloatRangeSlider(0, 1)]
+		[SerializeField] [FloatRangeSlider(0, 1)]
 		private FloatRange _a;
 
 		public Color GetRandom()

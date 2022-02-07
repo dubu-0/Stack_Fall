@@ -1,5 +1,4 @@
 ﻿using System;
-using StackFall.Colors;
 using StackFall.Skyboxes;
 using UnityEngine;
 
@@ -9,7 +8,11 @@ namespace StackFall.Cam
 	public class CameraConfig
 	{
 		[SerializeField] private SkyboxCollection _skyboxCollection;
-		[field: SerializeField, Range(10, 30)] public int Size { get; private set; }
+
+		[field: SerializeField]
+		[field: Range(10, 30)]
+		public int Size { get; private set; }
+
 		[field: SerializeField] public Vector3 PositionOffset { get; private set; }
 		[field: SerializeField] public Vector3 RotationOffset { get; private set; }
 
@@ -22,7 +25,7 @@ namespace StackFall.Cam
 		{
 			if (TargetToFollow != null)
 				throw new Exception("Already inited");
-			
+
 			TargetToFollow = targetToFollow;
 		}
 	}

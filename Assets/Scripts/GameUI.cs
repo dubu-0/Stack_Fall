@@ -13,14 +13,14 @@ namespace StackFall
 		[SerializeField] private TextMeshProUGUI _currentLevel;
 		[SerializeField] private TextMeshProUGUI _nextLevel;
 		[SerializeField] private Slider _levelProgressBar;
-		
-		private LevelUI _levelUI;
 		private LevelCounter _levelCounter;
 
-		public void Initialize(LevelCounter levelCounter, Player player)
+		private LevelUI _levelUI;
+
+		public void Initialize(LevelCounter levelCounter, PlayerCollisionHandler playerCollisionHandler)
 		{
 			_levelCounter = levelCounter;
-			_levelUI = new LevelUI(_levelCounter, _currentLevel, _nextLevel, player, _levelProgressBar);
+			_levelUI = new LevelUI(_levelCounter, _currentLevel, _nextLevel, playerCollisionHandler, _levelProgressBar);
 		}
 
 		public void Subscribe()
