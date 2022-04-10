@@ -13,15 +13,22 @@ namespace StackFall.PlayerSystem
 		{
 			if (_player.IsNotFallingDown)
 			{
-				OnShapePartTouched?.Invoke(collisionInfo.transform,
-					collisionInfo.collider.ClosestPointOnBounds(transform.position));
+				if (collisionInfo.gameObject.TryGetComponent<ShapePart>(out var shapePart))
+				{
+					OnShapePartTouched?.Invoke(shapePart.transform,
+						shapePart.GetComponent<Collider>().ClosestPointOnBounds(transform.position));
+				}
+				
 				_player.Jump();
 			}
+			
+			if (collisionInfo.gameObject.GetComponentInParent<WinPlatform>()) 
+				HandleCollisionWithWinPlatform();
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (IsNotCollidedWith(other, out var shapePart))
+			if (other.gameObject.TryGetComponent<WinPlatform>(out _))
 			{
 				HandleCollisionWithWinPlatform();
 				return;
@@ -30,7 +37,8 @@ namespace StackFall.PlayerSystem
 			if (_player.IsNotFallingDown)
 				return;
 
-			HandleFallWith(shapePart);
+			if (other.gameObject.TryGetComponent<ShapePart>(out var shapePart)) 
+				HandleFallWith(shapePart);
 		}
 
 		public void Initialize()
@@ -43,14 +51,11 @@ namespace StackFall.PlayerSystem
 		public event Action<Transform, Vector3> OnShapePartTouched;
 		public event Action<float> OnShapePartBroken;
 
-		private bool IsNotCollidedWith(Collider other, out ShapePart shapePart)
-		{
-			return !other.gameObject.TryGetComponent(out shapePart);
-		}
-
 		private void HandleCollisionWithWinPlatform()
 		{
 			OnWinPlatformTouched?.Invoke();
+			OnWinPlatformTouched = null;
+			_player.enabled = false;
 		}
 
 		private void HandleFallWith(ShapePart shapePart)
@@ -65,6 +70,8 @@ namespace StackFall.PlayerSystem
 				if (shapePart.IsBlack)
 				{
 					OnBlackPartTouched?.Invoke();
+					_player.gameObject.SetActive(false);
+					OnBlackPartTouched = null;
 				}
 				else
 				{

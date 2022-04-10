@@ -30,9 +30,9 @@ namespace StackFall.PlayerSystem
 
 		public void Subscribe()
 		{
-			_playerCollisionHandler.OnBlackPartTouched += _sceneLoader.ReloadScene;
+			_playerCollisionHandler.OnBlackPartTouched += _sceneLoader.LoadLoseScreen;
 
-			_playerCollisionHandler.OnWinPlatformTouched += _sceneLoader.ReloadScene;
+			_playerCollisionHandler.OnWinPlatformTouched += _sceneLoader.LoadWinScreen;
 			_playerCollisionHandler.OnWinPlatformTouched += _levelCounter.Increment;
 			_playerCollisionHandler.OnWinPlatformTouched += _playerSound.PlayWinSound;
 
@@ -40,15 +40,17 @@ namespace StackFall.PlayerSystem
 			_playerCollisionHandler.OnShapePartTouched += _playerSound.PlayJumpSound;
 
 			_player.OnFallingTimeChanged += _playerBurnIndicator.ChangeValue;
+			
+			_player.OnBurned += _playerSound.PlayFireSound;
 
 			_playerCollisionHandler.OnShapePartBroken += _playerSound.PlayBrokenSound;
 		}
 
 		public void Unsubscribe()
 		{
-			_playerCollisionHandler.OnBlackPartTouched -= _sceneLoader.ReloadScene;
+			_playerCollisionHandler.OnBlackPartTouched -= _sceneLoader.LoadLoseScreen;
 
-			_playerCollisionHandler.OnWinPlatformTouched -= _sceneLoader.ReloadScene;
+			_playerCollisionHandler.OnWinPlatformTouched -= _sceneLoader.LoadWinScreen;
 			_playerCollisionHandler.OnWinPlatformTouched -= _levelCounter.Increment;
 			_playerCollisionHandler.OnWinPlatformTouched -= _playerSound.PlayWinSound;
 
@@ -56,6 +58,8 @@ namespace StackFall.PlayerSystem
 			_playerCollisionHandler.OnShapePartTouched -= _playerSound.PlayJumpSound;
 
 			_player.OnFallingTimeChanged -= _playerBurnIndicator.ChangeValue;
+			
+			_player.OnBurned -= _playerSound.PlayFireSound;
 
 			_playerCollisionHandler.OnShapePartBroken -= _playerSound.PlayBrokenSound;
 		}

@@ -4,7 +4,6 @@ using StackFall.LevelSystem;
 using StackFall.ParticleSystems;
 using StackFall.PlayerSystem;
 using StackFall.Printers;
-using StackFall.SceneManagement;
 using StackFall.Shapes;
 using StackFall.TubeSystem;
 using UnityEngine;
@@ -33,6 +32,9 @@ namespace StackFall
 			InitializeSpritePrinter();
 			InitializeFxController();
 			InitializeGameUI();
+			
+			_levelSystemInitializer.LevelCounter.Reset();
+			Debug.Log("LevelCounter was reset from Game ");
 		}
 
 		private void OnEnable()
@@ -79,11 +81,10 @@ namespace StackFall
 		{
 			var spawnPosition = new Vector3(0, tubeHeight * 2, -shapeWidth * 1.2f);
 			_playerSystemInitializer.PlayerConfig.InitSpawnPosition(spawnPosition);
-
-			var sceneLoader = new SceneLoader();
+			
 			var particleSystemSpawner =
 				new ParticleSystemSpawner(_playerSystemInitializer.PlayerConfig.PlayerTouchedGroundPrefab);
-			_playerSystemInitializer.Initialize(sceneLoader, _levelSystemInitializer.LevelCounter,
+			_playerSystemInitializer.Initialize(_levelSystemInitializer.LevelCounter,
 				particleSystemSpawner);
 		}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using StackFall.SceneManagement;
 using UnityEngine;
 
 namespace StackFall.PlayerSystem
@@ -6,6 +7,7 @@ namespace StackFall.PlayerSystem
 	[Serializable]
 	public class PlayerConfig
 	{
+		[field: SerializeField] public SceneLoader SceneLoader { get; private set; }
 		[field: SerializeField] public ParticleSystem PlayerTouchedGroundPrefab { get; private set; }
 		[field: SerializeField] public ParticleSystem PlayerOnFirePrefab { get; private set; }
 		[field: SerializeField] public PlayerBurnIndicator PlayerBurnIndicator { get; private set; }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using StackFall.Shapes.Config;
-using UnityEditor;
 using UnityEngine;
 
 namespace StackFall.Shapes
@@ -29,7 +28,7 @@ namespace StackFall.Shapes
 			for (var i = 1; i <= _shapeConfig.Amount; i++)
 			{
 				var randomShapeIndex = Random.Range((int) _shapeTypes.Min(), (int) _shapeTypes.Max() + 1);
-				var shapeInstance = (Shape) PrefabUtility.InstantiatePrefab(_shapePrefabs[randomShapeIndex], transform);
+				var shapeInstance = Instantiate(_shapePrefabs[randomShapeIndex], transform);
 				shapeInstance.transform.localPosition = Vector3.zero;
 				shapeInstance.Initialize(_shapeConfig);
 				shapeInstance.IndentPosition(i);

@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace StackFall.ParticleSystems
 {
@@ -14,7 +13,7 @@ namespace StackFall.ParticleSystems
 
 		public void Spawn(Transform parent, Vector3 position)
 		{
-			var particleSystem = (ParticleSystem) PrefabUtility.InstantiatePrefab(_particleSystemPrefab, parent);
+			var particleSystem = Object.Instantiate(_particleSystemPrefab, parent, false);
 			particleSystem.transform.position = position;
 			particleSystem.Play();
 		}

@@ -6,7 +6,7 @@ namespace StackFall.TubeSystem
 	[SelectionBase]
 	public class Tube : MonoBehaviour
 	{
-		private FinishPlatform _finishPlatform;
+		private WinPlatform _winPlatform;
 		private TubeConfig _tubeConfig;
 		private TubeView _view;
 
@@ -15,13 +15,13 @@ namespace StackFall.TubeSystem
 			_tubeConfig = tubeConfig;
 
 			_view = GetComponentInChildren<TubeView>();
-			_finishPlatform = GetComponentInChildren<FinishPlatform>();
+			_winPlatform = GetComponentInChildren<WinPlatform>();
 
 			// previous: _tubeConfig.Size.Width, _levelDifficulty.GetTubeHeightForCurrentDifficulty(_tubeConfig.Size.Height)
 
 			_view.SetLocalScale(_tubeConfig.InitialSize);
 
-			_finishPlatform.SetLocalScale(_tubeConfig.InitialSize);
+			_winPlatform.SetLocalScale(_tubeConfig.InitialSize);
 		}
 	}
 }

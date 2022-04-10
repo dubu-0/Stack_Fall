@@ -1,6 +1,6 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace StackFall.TubeSystem
 {
@@ -16,7 +16,7 @@ namespace StackFall.TubeSystem
 
 		public void Initialize(int height)
 		{
-			_tube = (Tube) PrefabUtility.InstantiatePrefab(_tubePrefab);
+			_tube = Object.Instantiate(_tubePrefab);
 			_tubeConfig.InitHeight(height);
 			_tube.Initialize(_tubeConfig);
 		}

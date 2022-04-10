@@ -246,7 +246,6 @@ GameObject:
   - component: {fileID: 5551884117170191009}
   - component: {fileID: 5551884117170191010}
   - component: {fileID: 5551884117170191011}
-  - component: {fileID: 3541386192993897917}
   - component: {fileID: 4234534555558639671}
   - component: {fileID: 6217489219312428343}
   m_Layer: 3
@@ -319,18 +318,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3541386192993897917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5551884117170191022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b0dbb9493445339e55f5f62895ebd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &4234534555558639671
 TrailRenderer:
   serializedVersion: 2

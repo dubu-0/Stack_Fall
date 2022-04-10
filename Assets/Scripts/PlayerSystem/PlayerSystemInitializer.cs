@@ -2,7 +2,6 @@
 using StackFall.LevelSystem;
 using StackFall.ParticleSystems;
 using StackFall.SceneManagement;
-using UnityEditor;
 using UnityEngine;
 
 namespace StackFall.PlayerSystem
@@ -18,18 +17,18 @@ namespace StackFall.PlayerSystem
 		public PlayerCollisionHandler PlayerCollisionHandler { get; private set; }
 		public PlayerEventController PlayerEventController { get; private set; }
 
-		public void Initialize(SceneLoader sceneLoader, LevelCounter levelCounter,
+		public void Initialize(LevelCounter levelCounter,
 			ParticleSystemSpawner particleSystemSpawner)
 		{
 			InitializePlayer();
 			InitializePlayerCollisionHandler();
-			InitializePlayerEventController(sceneLoader, levelCounter, particleSystemSpawner);
+			InitializePlayerEventController(_playerConfig.SceneLoader, levelCounter, particleSystemSpawner);
 		}
 
 		private void InitializePlayer()
 		{
-			Player = (Player) PrefabUtility.InstantiatePrefab(_playerPrefab);
-			PrefabUtility.InstantiatePrefab(PlayerConfig.PlayerOnFirePrefab, Player.transform);
+			Player = UnityEngine.Object.Instantiate(_playerPrefab);
+			UnityEngine.Object.Instantiate(PlayerConfig.PlayerOnFirePrefab, Player.transform);
 			Player.transform.position = _playerConfig.SpawnPosition;
 			Player.Initialize(_playerConfig);
 		}

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using StackFall.Shapes.Config;
-using UnityEditor;
 using UnityEngine;
 
 namespace StackFall.Shapes
@@ -20,7 +19,7 @@ namespace StackFall.Shapes
 		{
 			_shapeConfig.InitAmount(shapeAmount);
 
-			ShapeSpawner = (ShapeSpawner) PrefabUtility.InstantiatePrefab(_shapeSpawnerPrefab);
+			ShapeSpawner = UnityEngine.Object.Instantiate(_shapeSpawnerPrefab);
 
 			ShapeSpawner.Initialize(_shapeConfig, shapeTypes);
 			ShapeSpawner.ResizeShapesWidthTo(shapeWidth);

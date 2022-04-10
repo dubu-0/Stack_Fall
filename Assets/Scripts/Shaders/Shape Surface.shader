@@ -30,7 +30,7 @@ Shader "Custom/Shape Surface"
         void ConfigureSurface(Input input, inout SurfaceOutputStandard surface)
         {
             surface.Albedo = _Color;
-            surface.Albedo -= InOutQuad(log(input.worldPos.y / 10), 0.75) * 0.0125;
+            surface.Albedo -= InOutQuad(log(input.worldPos.y / 10), 0.75) * 0.0075;
             surface.Smoothness = 0;
         }
         
